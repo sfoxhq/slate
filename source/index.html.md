@@ -510,11 +510,7 @@ ID | Description
 
 # Python Wrapper
 
-## Test
-# coding: utf-8
-
-# In[23]:
-
+```shell
 
 import urllib
 from urllib.request import urlopen
@@ -720,7 +716,6 @@ class sfox:
 
         
 sfox=sfox('')#Put in your API KEY
-
-
+'''
 
 
