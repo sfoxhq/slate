@@ -510,4 +510,217 @@ ID | Description
 
 # Python Wrapper
 
-##Test
+## Test
+# coding: utf-8
+
+# In[23]:
+
+
+import urllib
+from urllib.request import urlopen
+import json
+import time
+import hmac,hashlib
+from datetime import datetime as dt
+import requests
+from requests.auth import HTTPBasicAuth
+import pandas as pd
+from IPython.display import display, HTML, clear_output
+
+class sfox:
+    
+#Public API
+
+    def __init__(self, APIKey):
+        self.APIKey = APIKey
+
+    #added function to pick a pair/market
+    def rawbook(self,market):
+        ret = urlopen('https://api.sfox.com/v1/markets/orderbook/'+ market)
+        return json.loads(ret.read())
+    
+    #split GetBestPrice function into two 
+    def bestBuyPrice(self,quantity):
+        ret = urlopen('https://api.sfox.com/v1/offer/buy?amount=' + str(quantity))
+        print("Buy")
+        return json.loads(ret.read())
+    
+    def bestSellPrice(self,quantity,pair):
+        ret = urlopen('https://api.sfox.com/v1/offer/sell?amount=' + str(quantity))
+        print("Sell")
+        return json.loads(ret.read())
+
+#Private API
+
+    #Trade API
+
+    
+    def market_buy(self,quantity,pair):
+        ret = requests.post('https://api.sfox.com/v1/orders/buy', data={'quantity': str(quantity),'currency_pair':str(pair)}, 
+                            auth=HTTPBasicAuth(self.APIKey,''))
+        return json.loads(ret.text)
+    
+    def market_sell(self,quantity,pair):
+        ret = requests.post('https://api.sfox.com/v1/orders/sell', data={'quantity': str(quantity), 'currency_pair':str(pair)},
+                            auth=HTTPBasicAuth(self.APIKey,''))
+        return json.loads(ret.text)
+    
+    def limit_buy(self,quantity,price,pair):
+        ret = requests.post('https://api.sfox.com/v1/orders/buy', data={'quantity': str(quantity), 'price': str(price),
+                            'currency_pair':str(pair)}, auth=HTTPBasicAuth(self.APIKey,''))
+        return json.loads(ret.text)
+    
+    def limit_sell(self,quantity,price,pair):
+        ret = requests.post('https://api.sfox.com/v1/orders/sell', data={'quantity': str(quantity), 'price': str(price),
+                            'currency_pair':str(pair)}, auth=HTTPBasicAuth(self.APIKey,''))
+        return json.loads(ret.text)
+    
+        
+    #Account API
+    
+
+    def portfolio(self):
+        ret = requests.get('https://api.sfox.com/v1/user/balance', auth=HTTPBasicAuth(self.APIKey,''))
+        balance=json.loads(ret.text)
+        balance=pd.DataFrame(balance,columns=['currency','available','balance','held'])
+        portfolio=balance.set_index('currency')
+        return portfolio
+
+    
+    def getOrderStatus(self,order_id):
+        ret = requests.get('https://api.sfox.com/v1/order/'+ str(order_id), auth=HTTPBasicAuth(self.APIKey,''))
+        return json.loads(ret.text)
+    
+    def getTradeHistory(self):
+        ret = requests.get('https://api.sfox.com/v1/account/transactions?limit=250&offset=0', auth=HTTPBasicAuth(self.APIKey,''))
+        if json.loads(ret.text)==[]:
+            print("No Trade History")
+        trades=json.loads(ret.text)
+        print("Raw API:\n", trades)
+        trade_hist=pd.DataFrame(trades, columns=['action','price','amount','currency','day','fees','id'])
+        return trade_hist
+    
+    def getActiveOrders(self):
+        ret = requests.get('https://api.sfox.com/v1/orders', auth=HTTPBasicAuth(self.APIKey,''))
+        if json.loads(ret.text)==[]:
+            print("No Active Trades")
+        else:
+            print("You have", len(json.loads(ret.text)), "active orders")
+        return json.loads(ret.text)
+    
+    def cancelOrder(self,order_id):
+        ret = requests.delete('https://api.sfox.com/v1/order/'+ str(order_id), auth=HTTPBasicAuth(self.APIKey,''))
+        return json.loads(ret.text)
+    
+    def cancelLastOrder(self):
+        orders=sfox.getActiveOrders()
+        last_order=orders[0]['id']
+        sfox.cancelOrder(last_order)
+            
+            
+    def cancelAllOrders(self):
+        order=sfox.getActiveOrders()
+        ids=[]
+        print(len(order),"orders cancelled")
+        for i in range(len(order)):
+            ids.append(order[i]['id'])
+        for i in range(len(ids)):
+            sfox.cancelOrder(ids[i])
+    
+    
+    
+        
+    
+#Algorithms/Trade API
+    def liveorderbook(self, market):
+        while True:
+            timestamp=(str(dt(time.localtime().tm_year, time.localtime().tm_mon, time.localtime().tm_mday, 
+                              time.localtime().tm_hour, time.localtime().tm_min, time.localtime().tm_sec)))
+            price= sfox.rawbook(market)
+            buyers= pd.DataFrame(price['bids'], columns=['Bid Price','Bid Size','Bid Exchange'])
+            buyers['Bid Notional']=buyers['Bid Price']*buyers['Bid Size']
+            sellers= pd.DataFrame(price['asks'], columns=['Sell Price','Sell Size','Sell Exchange'])
+            sellers['Sell Notional']=sellers['Sell Price']*sellers['Sell Size']
+
+            orderbook= pd.concat([buyers,sellers], axis=1)
+            orderbook['Sell Fee (per btc)']=(orderbook['Sell Price']*.0025)
+            orderbook['Buy Fee (per btc)']=(orderbook["Bid Price"]*.0025)
+            orderbook=orderbook[['Bid Price','Bid Size','Sell Price','Sell Size','Bid Exchange','Bid Notional',
+                             'Sell Exchange', 'Sell Notional', 'Sell Fee (per btc)','Buy Fee (per btc)']]
+            print("Orderbook:",market, "Time:", timestamp)
+            display(HTML(orderbook.to_html()))
+            time.sleep(1)
+            clear_output(wait=True)
+        
+        
+        
+    def arb_snipe(self, market, show=False):
+        price= sfox.rawbook(market)
+        buyers= pd.DataFrame(price['bids'], columns=['Bid Price','Bid Size','Bid Exchange'])
+        buyers['Bid Notional']=buyers['Bid Price']*buyers['Bid Size']
+        sellers= pd.DataFrame(price['asks'], columns=['Sell Price','Sell Size','Sell Exchange'])
+        sellers['Sell Notional']=sellers['Sell Price']*sellers['Sell Size']
+
+        orderbook= pd.concat([buyers,sellers], axis=1)
+        orderbook['Sell Fee (per btc)']=(orderbook['Sell Price']*.0025)
+        orderbook['Buy Fee (per btc)']=(orderbook["Bid Price"]*.0025)
+        orderbook["Arb $ (per btc)"]= orderbook["Bid Price"]-orderbook['Sell Price'] 
+        
+        arb_orderbook = orderbook[orderbook['Arb $ (per btc)'] > orderbook['Buy Fee (per btc)']+orderbook['Sell Fee (per btc)']]
+
+        while len(arb_orderbook) > 0 :
+            print("Arb exists")
+            order_size= min(orderbook['Sell Size'][0],orderbook['Bid Size'][0])
+            buy_side=min(orderbook['Bid Price'][0],orderbook['Sell Price'][0])
+            sell_side=max(orderbook['Bid Price'][0],orderbook['Sell Price'][0])
+            print("Selling",sell_side-orderbook['Sell Fee'][0])
+            print("Buying",buy_side+orderbook['Buy Fee'][0])
+            print("Arbitrage after fees (per btc):", sell_side-orderbook['Sell Fee'][0]-buy_side-orderbook['Buy Fee'][0])
+            sfox.market_buy(order_size)
+            sfox.market_sell(order_size)
+
+        else:
+            print("No Arb opportunities")
+        
+        if show==True:
+            display(HTML(orderbook.to_html()))
+
+    
+    def live_spread_strategy(self,beta,market1,market2, Trade=False):
+        
+        port=sfox.portfolio()
+        holdings={}
+        for cryptos in port.index:
+            holdings[cryptos]=port.loc[cryptos]['balance']
+
+        while True:
+            timestamp=(str(dt(time.localtime().tm_year, time.localtime().tm_mon, time.localtime().tm_mday, 
+                              time.localtime().tm_hour, time.localtime().tm_min, time.localtime().tm_sec)))
+            buy_mkt1=sfox.rawbook(market1)['asks']
+            sell_mkt1=sfox.rawbook(market1)['bids']
+            buy_mkt2=sfox.rawbook(market2)['asks']
+            sell_mkt2=sfox.rawbook(market2)['bids']
+
+
+            spread= pd.DataFrame((buy_mkt1), columns=[str(market1)+' Asks','Size','Exchange'])
+            spread2= pd.DataFrame((sell_mkt1), columns=[str(market1)+' Bids','Size','Exchange'])
+            spread3= pd.DataFrame((buy_mkt2), columns=[str(market2)+' Asks','Size','Exchange'])
+            spread4= pd.DataFrame((sell_mkt2), columns=[str(market2)+' Bids','Size','Exchange'])
+
+            spreads=pd.concat([spread,spread2,spread3,spread4],axis=1)
+            spreads['Buy Spread']=spreads[str(market1)+' Asks']-spreads[str(market2)+' Bids']*beta
+            spreads['Sell Spread']=spreads[str(market1)+' Bids']-spreads[str(market2)+' Asks']*beta
+            print("Inventory", holdings)
+            print("Time:", timestamp)
+            display(HTML(spreads.to_html()))
+            time.sleep(0.5)
+            clear_output(wait=True)
+        if Trade==True:
+            print('run your spread strategy')
+
+        
+sfox=sfox('')#Put in your API KEY
+
+
+
+
