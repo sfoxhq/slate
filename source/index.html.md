@@ -30,7 +30,7 @@ curl "api_endpoint_here"
 
 > Make sure to replace <api_key> with your API key, and don't forget the colon.
 
-SFOX uses API keys to grant access. You can create a new SFOX API key at our [developer portal](http://sfox.com/#/account/api).
+SFOX uses API keys to grant access. You can create a new SFOX API key at our [developer portal](http://sfox.com/account/api).
 
 The API key should be included in all API requests to the server in a header that looks like the following:
 
@@ -508,3 +508,6 @@ ID | Description
 306 | Sniper
 307 | TWAP
 
+# Python Wrapper
+
+##Test
