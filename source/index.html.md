@@ -82,26 +82,38 @@ quantity||The number of bitcoin you will be trading
 ## Get Orderbook
 
 ```shell
-curl "https://api.sfox.com/v1/markets/orderbook"
+curl "https://api.sfox.com/v1/markets/orderbook/<market_of_choice>"
 ```
 
 > The result of the calls is an array of bids and asks:
 
 ```json
 {
-  "bids":[
-    [383.26,0.53,"bitstamp"],
-    [383.2,1.02069829,"bitstamp"],
-    [383.18,0.03914609,"bitstamp"],
-    [381.01,1.97630598,"bitfinex"],
-    [380.93,0.705,"bitfinex"]
+  'asks': [
+    [8155.1, 0.3881078, 'gemini'],
+    [8155.4, 0.42019816, 'gemini'],
+    [8155.41, 0.64771848, 'gemini'],
+    [8157.04, 3.9171, 'itbit'],
+    [8157.97, 1.3509, 'itbit'],
+    [8159.24, 2.04259106, 'bitstamp']
   ],
-  "asks":[
-    [381.06,0.01,"bitfinex"],
-    [381.1,5,"bitfinex"],
-    [383.74,1.307,"bitstamp"]
-  ]
-}
+  'bids': [
+    [8169.99, 0.00196, 'gemini'],
+    [8169, 0.0921289, 'bitfinex'],
+    [8168.61, 0.001, 'bitstamp'],
+    [8168.51, 1.50982744, 'itbit'],
+    [8168.47, 0.001, 'bitfinex'],
+    [8168.26, 0.001, 'bitfinex']
+  ],
+  'currency': 'usd',
+  'exchanges': {
+    'bitfinex': 'OK',
+    'bitstamp': 'OK',
+    'gemini': 'OK',
+    'itbit': 'OK'
+  },
+  'lastupdated': 1532994078139,
+  'pair': 'btcusd'}
 ```
 
 This will return the blended orderbook of all the available exchanges.
