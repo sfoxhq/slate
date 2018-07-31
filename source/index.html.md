@@ -89,31 +89,31 @@ curl "https://api.sfox.com/v1/markets/orderbook/<market_of_choice>"
 
 ```json
 {
-  'asks': [
-    [8155.1, 0.3881078, 'gemini'],
-    [8155.4, 0.42019816, 'gemini'],
-    [8155.41, 0.64771848, 'gemini'],
-    [8157.04, 3.9171, 'itbit'],
-    [8157.97, 1.3509, 'itbit'],
-    [8159.24, 2.04259106, 'bitstamp']
+  "asks": [
+    [8155.1, 0.3881078, "gemini"],
+    [8155.4, 0.42019816, "gemini"],
+    [8155.41, 0.64771848, "gemini"],
+    [8157.04, 3.9171, "itbit"],
+    [8157.97, 1.3509, "itbit"],
+    [8159.24, 2.04259106, "bitstamp"]
   ],
-  'bids': [
-    [8169.99, 0.00196, 'gemini'],
-    [8169, 0.0921289, 'bitfinex'],
-    [8168.61, 0.001, 'bitstamp'],
-    [8168.51, 1.50982744, 'itbit'],
-    [8168.47, 0.001, 'bitfinex'],
-    [8168.26, 0.001, 'bitfinex']
+  "bids": [
+    [8169.99, 0.00196, "gemini"],
+    [8169, 0.0921289, "bitfinex"],
+    [8168.61, 0.001, "bitstamp"],
+    [8168.51, 1.50982744, "itbit"],
+    [8168.47, 0.001, "bitfinex"],
+    [8168.26, 0.001, "bitfinex"]
   ],
-  'currency': 'usd',
-  'exchanges': {
-    'bitfinex': 'OK',
-    'bitstamp': 'OK',
-    'gemini': 'OK',
-    'itbit': 'OK'
+  "currency": "usd",
+  "exchanges": {
+    "bitfinex": "OK",
+    "bitstamp": "OK",
+    "gemini": "OK",
+    "itbit": "OK"
   },
-  'lastupdated': 1532994078139,
-  'pair': 'btcusd'}
+  "lastupdated": 1532994078139,
+  "pair": "btcusd"}
 ```
 
 This will return the blended orderbook of all the available exchanges.
