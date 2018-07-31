@@ -168,6 +168,56 @@ Parameter | Default | Description
 --------- | ------- | -----------
 NONE
 
+## Get Trade History
+
+```shell
+curl "https://api.sfox.com/v1/account/transactions?limit=250&offset=0"
+  -u "<api_key>:"
+```
+
+> The above command returns JSON structured like this:
+
+```
+[
+  {
+    'id': 12224191, 
+    'order_id': '67662454', 
+    'client_order_id': '', 
+    'day': '2018-07-29T21:30:10.000Z', 
+    'action': 'Buy', 
+    'currency': 'usd', 
+    'memo': '',
+    'amount': -438.34854806, 
+    'net_proceeds': -438.34854806, 
+    'price': 465.19547184, 
+    'fees': 1.53, 
+    'status': 'done', 
+    'hold_expires': '', 
+    'tx_hash': '', 
+    'algo_name': 'Smart', 
+    'algo_id': '200',
+    'account_balance': 3929.90349381, 
+    'AccountTransferFee': None
+  }
+]
+```
+
+Use this endpoint to access your trade history.  It returns an array of objects, each of which has details for each individual trade.  
+
+
+
+### HTTP Request
+
+`GET https://api.sfox.com/v1/account/transactions?limit=250&offset=0`
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+NONE
+
+
+
 ## Request an ACH deposit
 
 ```shell
