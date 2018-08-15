@@ -22,7 +22,7 @@ Features
                   
 * **Strategy** 
   - **Connect to Public and Private API. Strategy('#Enter API Key')**
-  - **Arbitrage bot: will get snapshot of the orderoboks of any given market, connect to private API, and execute any arbitrage opportunity if exists**
+  - **Arbitrage bot: will get snapshot of the orderbooks of any given market, connect to private API, and execute any arbitrage opportunity if exists**
   - **Spread Strategy: Framework for executing a spread strategy.  Choose two markets, will provide continously running orderbooks**
                
 
