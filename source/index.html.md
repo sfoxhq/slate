@@ -76,7 +76,7 @@ We also return VWAP - Volume weighted average price.  "vwap" is the expected pri
 
 Parameter | Default | Description
 --------- | ------- | -----------
-quantity||The number of bitcoin you will be trading
+quantity||The amount of crypto assets you will be trading
 
 
 ## Get Orderbook
@@ -280,18 +280,19 @@ Submits a coin or currency withdrawal request to SFOX.  Your funds must be avail
 Parameter | Description
 --------- | -----------
 amount | The amount you wish to withdraw
-currency | Currency is one of: usd or btc
-address | if currency == btc this field has to be a valid mainnet bitcoin address. Otherwise leave it out or empty
+currency | Currency is one of: usd, btc, eth
+address | if the "currency" is a crypto asset, this field has to be a valid mainnet address. Otherwise leave it out or empty
 
 
 # Orders
 
-## Buy Now
+## Buy (Market Order)
 
 ```shell
 curl "https://api.sfox.com/v1/orders/buy"
   -u "<api_key>:"
   -d "quantity=1"
+  -d "currency_pair=btcusd"
 ```
 
 > The above command returns the same JSON object as the Order Status API, and it is structured like this:
@@ -310,7 +311,7 @@ curl "https://api.sfox.com/v1/orders/buy"
 }
 ```
 
-This is a market order request to buy certain quantity of bitcoin.  Since this is a "Buy Now" order, it will execute immediately.
+This is a market order request to buy certain quantity of a crypto assets.  Since this is a "Buy Now" order, it will execute immediately.
 
 ### HTTP Request
 
@@ -320,16 +321,17 @@ This is a market order request to buy certain quantity of bitcoin.  Since this i
 
 Parameter | Description
 --------- | -----------
-quantity | the amount of bitcoin you wish to buy
+quantity | the amount of crypto assets you wish to buy
 
 
-## Buy Bitcoin
+## Buy (Limit Order)
 
 ```shell
 curl "https://api.sfox.com/v1/orders/buy"
   -u "<api_key>:"
   -d "quantity=1"
   -d "price=10"
+  -d "currency_pair=btcusd"
 ```
 
 > The above command returns the same JSON object as the Order Status API, and it is structured like this:
@@ -348,7 +350,7 @@ curl "https://api.sfox.com/v1/orders/buy"
 }
 ```
 
-This endpoint initiates a buy order for bitcoin for the specified amount with the specified limit price.  If the price field is omitted, then the order will be treated as a market order and will execute immediately.  If there is an issue with the request you will get the reason in the "error" field.
+This endpoint initiates a buy order for crypto assets at the specified amount with the specified limit price.  If the price field is omitted, then the order will be treated as a market order and will execute immediately.  If there is an issue with the request you will get the reason in the "error" field.
 
 ### HTTP Request
 
@@ -358,19 +360,20 @@ This endpoint initiates a buy order for bitcoin for the specified amount with th
 
 Parameter | Description
 --------- | -----------
-quantity | the amount of bitcoin you wish to buy
+quantity | the amount of crypto assets you wish to buy
 price | the max price you are willing to pay.  The executed price will always be less than or equal to this price if the market conditions allow it, otherwise the order will not execute.
 algorithm_id | the [algorithm id](#algorithm-ids) you wish to use to execute the order (default: 200) 
 client_order_id | this is an optional field that will hold a user specified id for reference
 currency_pair | the currency pair you wish to trade (default: btcusd)
 
 
-## Sell Now
+## Sell (Market Order)
 
 ```shell
 curl "https://api.sfox.com/v1/orders/sell"
   -u "<api_key>:"
   -d "quantity=1"
+  -d "currency_pair=btcusd"
 ```
 
 > The above command returns the same JSON object as the Order Status API, and it is structured like this:
@@ -388,7 +391,7 @@ curl "https://api.sfox.com/v1/orders/sell"
   "status": "Started"
 }
 ```
-This is a market order request to sell certain quantity of bitcoin.  Since this is a "Sell Now" order, it will execute immediately.
+This is a market order request to sell certain quantity of crypto assets.  Since this is a "Sell Now" order, it will execute immediately.
 
 
 ### HTTP Request
@@ -399,15 +402,16 @@ This is a market order request to sell certain quantity of bitcoin.  Since this 
 
 Parameter | Description
 --------- | -----------
-quantity | the amount of bitcoin you wish to buy
+quantity | the amount of crypto assets you wish to buy
 
-## Sell Bitcoin
+## Sell (Limit Order)
 
 ```shell
 curl "https://api.sfox.com/v1/orders/sell"
   -u "<api_key>:"
   -d "quantity=1"
   -d "price=10"
+  -d "currency_pair=btcusd"
 ```
 
 > The above command returns the same JSON object as the Order Status API, and it is structured like this:
@@ -426,7 +430,7 @@ curl "https://api.sfox.com/v1/orders/sell"
 }
 ```
 
-This endpoint initiates a sell order for bitcoin for the specified amount with the specified limit price.  If the price field is omitted, then the order will be treated as a market order and will execute immediately.  If there is an issue with the request you will get the reason in the "error" field.
+This endpoint initiates a sell order for the specified amount with the specified limit price.  If the price field is omitted, then the order will be treated as a market order and will execute immediately.  If there is an issue with the request you will get the reason in the "error" field.
 
 ### HTTP Request
 
@@ -436,7 +440,7 @@ This endpoint initiates a sell order for bitcoin for the specified amount with t
 
 Parameter | Description
 --------- | -----------
-quantity | the amount of bitcoin you wish to buy
+quantity | the amount of crypto assets you wish to buy
 price | the min price you are willing to accept.  The executed price will always be higher than or equal to this price if the market conditions allow it, otherwise the order will not execute.
 algorithm_id | the [algorithm id](#algorithm-ids) you wish to use to execute the order (default: 200) 
 client_order_id | this is an optional field that will hold a user specified id for reference
@@ -570,269 +574,136 @@ ID | Description
 306 | Sniper
 307 | TWAP
 
-# Python Wrapper
+# Python example
+An example of a basic python binding for SFOX.
 
-Features
-------------
-
-* **SFOX Python Wrapper: Public API, Private API, Strategy**
-
-* **PubliC API** 
-  - **Connect to SFOX Rest API**
-  - **Raw Orderbook**
-  - **Live Orderbook**
-  - **Best Buy Price**
-  - **Best Sell Price**
-                 
-* **Private API** 
-  - **Connect to Private API. PrivateSfox('#Enter API Key')** 
-  - **Balance**
-  - **getOrderStatus**
-  - **getTradeHistory**
-  - **getActiveOrders**
-  - **cancelOrder**
-  - **CancelLastOrder**
-  - **CancelAllOrders**
-                  
-* **Strategy** 
-  - **Connect to Public and Private API. Strategy('#Enter API Key')**
-  - **Arbitrage bot: will get snapshot of the orderbooks of any given market, connect to private API, and execute any arbitrage opportunity if exists**
-  - **Spread Strategy: Framework for executing a spread strategy.  Choose two markets, will provide continously running orderbooks**
-               
-
-
-![Alt text](https://raw.githubusercontent.com/lmontealegre24/slate/master/source/images/Capture.PNG)
-
-
-```shell
-
-import urllib
-from urllib.request import urlopen
+## Public API
+```python
 import json
 import time
 import requests
-import pandas as pd
-from datetime import datetime as dt
-from requests.auth import HTTPBasicAuth
-from IPython.display import display, HTML, clear_output
 
-
-# Python 3: Jupyter Notebook
-
-#Public API
 class Sfox:
-        
-    def __init__(self, config={'endpoint': "api.sfox.com", 'version': "v1"}):
-        self.endpoint = config['endpoint']
-        self.apiVersion = config['version']
+    def __init__(self, endpoint="api.sfox.com", version="v1"):
+        self.endpoint = endpoint.lower()
+        self.apiVersion = version.lower()
 
-    def urlFor(self,resource):
+    def url_for(self, resource):
         return "https://" + self.endpoint + "/" + self.apiVersion + "/" + resource
 
-    def rawbook(self,market):
-        ret = urlopen(self.urlFor("markets/orderbook/")+ market)
-        return json.loads(ret.read())
-    
-    def liveorderbook(self, market):
-        while True:
-            timestamp=(str(dt(time.localtime().tm_year, time.localtime().tm_mon, time.localtime().tm_mday, 
-                              time.localtime().tm_hour, time.localtime().tm_min, time.localtime().tm_sec)))
-            price= Sfox.rawbook(market)
-            buyers= pd.DataFrame(price['bids'], columns=['Bid Price','Bid Size','Bid Exchange'])
-            buyers['Bid Notional']=buyers['Bid Price']*buyers['Bid Size']
-            sellers= pd.DataFrame(price['asks'], columns=['Sell Price','Sell Size','Sell Exchange'])
-            sellers['Sell Notional']=sellers['Sell Price']*sellers['Sell Size']
+    def get(self, resource, apiKey=None):
+        resource = resource.lower()
+        auth = None
+        if apiKey:
+            auth = requests.auth.HTTPBasicAuth(apiKey, "")
+        url = self.url_for(resource)
+        return requests.get(url, auth=auth)
 
-            orderbook= pd.concat([buyers,sellers], axis=1)
-            orderbook=orderbook[['Bid Price','Bid Size','Sell Price','Sell Size','Bid Exchange','Bid Notional',
-                             'Sell Exchange', 'Sell Notional']]
-            print("Orderbook:",market, "Time:", timestamp)
-            display(HTML(orderbook.to_html()))
-            time.sleep(1)
-            clear_output(wait=True)
+    def orderbook(self, market):
+        market = market.lower()
+        resource = "markets/orderbook/"+market
+        res = self.__get(resource)
+        return json.loads(res.text)
    
-    #split GetBestPrice from API reference page (https://www.sfox.com/developers/#price-data)
-    def bestBuyPrice(self,quantity):
-        ret = urlopen(self.urlFor("offer/buy?amount=")+ str(quantity))
-        print("Buy")
-        return json.loads(ret.read())
+    def bestBuyPrice(self, quantity):
+        resource = "offer/buy?amount="+str(quantity)
+        res = self.__get(resource)
+        data = json.loads(res.text)
+        return data["price"]
 
-    def bestSellPrice(self,quantity):
-        ret = urlopen(self.urlFor("offer/sell?amount=")+ str(quantity))
-        print("Sell")
-        return json.loads(ret.read())
-        
-        
-        
+    def bestSellPrice(self, quantity):
+        resource = "offer/sell?amount="+str(quantity)
+        res = self.__get(resource)
+        data = json.loads(res.text)
+        return data["price"]
+```
 
-#Private API
-    
-class PrivateSfox():
+## Private API
+```python
+class PrivateSfox(Sfox):
+    def __init__(self, api_key, endpoint="api.sfox.com", version="v1"):
+        self.endpoint = endpoint
+        self.apiVersion = version
+        self.api_key = api_key
+        super().__init__(endpoint, version)
 
-    def __init__(self, APIKey, config={'endpoint': "api.sfox.com", 'version': "v1"}):
-        self.endpoint = config['endpoint']
-        self.apiVersion = config['version']
-        self.APIKey = APIKey
+    def post(self, resource, data):
+        resource = resource.lower()
+        url = self.url_for(resource)
+        return requests.post(
+            url,
+            data = data, 
+            auth = requests.auth.HTTPBasicAuth(self.api_key,"")
+        )
 
-    def urlFor(self,resource):
-        return "https://" + self.endpoint + "/" + self.apiVersion + "/" + resource
+    def get(self, resource):
+        return super().get(resource, self.api_key)
+
+    def delete(self, resource):
+        url = self.url_for(resource)
+        return requests.delete(
+            url, 
+            auth = requests.auth.HTTPBasicAuth(self.api_key,"")
+        )
     
-    def market_buy(self,quantity,pair):
-        ret = requests.post(self.urlFor("orders/buy"), data={'quantity': str(quantity),'currency_pair':str(pair)}, 
-                            auth=HTTPBasicAuth(self.APIKey,''))
-        return json.loads(ret.text)
+    def market_buy(self, quantity, pair):
+        data = {"quantity": str(quantity),"currency_pair":str(pair)}
+        res = self.post("orders/buy", data)
+        return json.loads(res.text)
     
-    def market_sell(self,quantity,pair):
-        ret = requests.post(self.urlFor("orders/sell"), data={'quantity': str(quantity),'currency_pair':str(pair)}, 
-                            auth=HTTPBasicAuth(self.APIKey,''))
-        return json.loads(ret.text)
+    def market_sell(self, quantity, pair):
+        data = {"quantity": str(quantity),"currency_pair": str(pair)}
+        res = self.post("orders/sell", data)
+        return json.loads(res.text)
     
-    def limit_buy(self,quantity,price,pair):
-        ret = requests.post(self.urlFor("orders/buy"), data={'quantity': str(quantity), 'price': str(price),
-                            'currency_pair':str(pair)}, auth=HTTPBasicAuth(self.APIKey,''))
-        return json.loads(ret.text)
+    def limit_buy(self, price, quantity, pair):
+        data = {"quantity": str(quantity), "price": str(price), "currency_pair":str(pair)}
+        res = self.post("orders/buy", data)
+        return json.loads(res.text)
     
-    def limit_sell(self,quantity,price,pair):
-        ret = requests.post(self.urlFor("orders/sell"), data={'quantity': str(quantity), 'price': str(price),
-                            'currency_pair':str(pair)}, auth=HTTPBasicAuth(self.APIKey,''))
-        return json.loads(ret.text)
-    
-        
-    #Account API
-    
+    def limit_sell(self, price, quantity, pair):
+        data = {"quantity": str(quantity), "price": str(price), "currency_pair":str(pair)}
+        res = self.post("orders/sell", data)
+        return json.loads(res.text)         
   
     def balance(self):
-        ret = requests.get(self.urlFor("user/balance"), auth=HTTPBasicAuth(self.APIKey,''))
-        return json.loads(ret.text)
-    
-# "balance"-  raw data above, placed into pandas below
-#         balance=json.loads(ret.text)
-#         balance=pd.DataFrame(balance,columns=['currency','available','balance','held'])
-#         portfolio=balance.set_index('currency')
-#         return portfolio
+        res = self.get("user/balance")
+        return json.loads(res.text)
 
-    def getOrderStatus(self,order_id):
-        ret = requests.get(self.urlFor("order/")+ str(order_id), auth=HTTPBasicAuth(self.APIKey,''))
-        return json.loads(ret.text)
+    def get_order_status(self,order_id):
+        res = self.get("order/" + str(order_id))
+        return json.loads(res.text)
     
-    def getTradeHistory(self):
-        ret = requests.get(self.urlFor("account/transactions?limit=250&offset=0"), auth=HTTPBasicAuth(self.APIKey,''))
-        return json.loads(ret.text)
-    
-    
-# "getTradeHistory"- raw data above, placed into pandas below
-#         trades=json.loads(ret.text)
-#         print("Raw API:\n", trades)
-#         trade_hist=pd.DataFrame(trades, columns=['action','price','amount','currency','day','fees','id'])
-#         return trade_hist
-    
-    def getActiveOrders(self):
-        ret = requests.get(self.urlFor("orders"), auth=HTTPBasicAuth(self.APIKey,''))
-        return json.loads(ret.text)
-    
-    
-    def cancelOrder(self,order_id):
-        ret = requests.delete('https://api.sfox.com/v1/order/'+ str(order_id), auth=HTTPBasicAuth(self.APIKey,''))
-        order=self.getOrderStatus(order_id)
-        if order['status'] == 'Canceled':
-            print("Order Canceled")
-        else:
-            print("Did NOT Cancel")
-        return json.loads(ret.text)
-    
-    def cancelLastOrder(self):
-        orders=self.getActiveOrders()
-        last_order=orders[0]['id']
-        self.cancelOrder(last_order)
-        return
-    
-    def cancelAllOrders(self):
-        order=self.getActiveOrders()
-        ids=[]
-        print(len(order),"orders cancelled")
-        for i in range(len(order)):
-            ids.append(order[i]['id'])
-        for i in range(len(ids)):
-            self.cancelOrder(ids[i])
-    
-        
-    
-#Algorithms/Trade API 
- 
-        
-class Strategy():   
-    
-    def __init__(self, APIKey, config={'endpoint': "api.sfox.com", 'version': "v1"}):
-        self.endpoint = config['endpoint']
-        self.apiVersion = config['version']
-        self.APIKey = APIKey
-    
-    def arb_snipe(self, market, show=False):
-        price= Sfox().rawbook(market)
-        buyers= pd.DataFrame(price['bids'], columns=['Bid Price','Bid Size','Bid Exchange'])
-        buyers['Bid Notional']=buyers['Bid Price']*buyers['Bid Size']
-        sellers= pd.DataFrame(price['asks'], columns=['Sell Price','Sell Size','Sell Exchange'])
-        sellers['Sell Notional']=sellers['Sell Price']*sellers['Sell Size']
+    def get_trade_history(self, limit, offset):
+        res = self.get("account/transactions?limit=" + str(limit) + "&offset=" + str(offset))
+        return json.loads(res.text)
 
-        orderbook= pd.concat([buyers,sellers], axis=1)
-        orderbook['Sell Fee (per btc)']=(orderbook['Sell Price']*.0025)
-        orderbook['Buy Fee (per btc)']=(orderbook["Bid Price"]*.0025)
-        orderbook["Arb $ (per btc)"]= orderbook["Bid Price"]-orderbook['Sell Price'] 
-        
-        arb_orderbook = orderbook[orderbook['Arb $ (per btc)'] > orderbook['Buy Fee (per btc)']+orderbook['Sell Fee (per btc)']]
+    def get_active_orders(self):
+        res = self.get("orders")
+        return json.loads(res.text)
 
-        while len(arb_orderbook) > 0 :
-            print("Arb exists")
-            order_size= min(orderbook['Sell Size'][0],orderbook['Bid Size'][0])
-            buy_side=min(orderbook['Bid Price'][0],orderbook['Sell Price'][0])
-            sell_side=max(orderbook['Bid Price'][0],orderbook['Sell Price'][0])
-            print("Selling",sell_side-orderbook['Sell Fee'][0])
-            print("Buying",buy_side+orderbook['Buy Fee'][0])
-            print("Arbitrage after fees (per btc):", sell_side-orderbook['Sell Fee'][0]-buy_side-orderbook['Buy Fee'][0])
-            self.market_buy(order_size)
-            self.market_sell(order_size)
+    def cancel_order(self,order_id):
+        res = self.delete("order/" + str(order_id))
+        order = self.get_order_status(order_id)
+        if order["status"] == "Canceled":
+            return True
+        return False
 
-        else:
-            print("No Arb opportunities")
-        
-        if show==True:
-            display(HTML(orderbook.to_html()))
+    def cancel_last_order(self):
+        orders = self.get_active_orders()
+        last_order = orders[0]["id"]
+        return self.cancel_order(last_order)
 
-    
-    def live_spread_strategy(self,beta,market1,market2, Trade=False):
-        
-        balance=PrivateSfox(self.APIKey).balance()
-        balance=pd.DataFrame(balance,columns=['currency','available','balance','held'])
-        port=balance.set_index('currency')
-        
-        holdings={}
-        for cryptos in port.index:
-            holdings[cryptos]=port.loc[cryptos]['balance']
+    def cancel_all_orders(self):
+        orders = self.get_active_orders()
+        targetList = []
+        canceled = []
 
-        while True:
-            timestamp=(str(dt(time.localtime().tm_year, time.localtime().tm_mon, time.localtime().tm_mday, 
-                              time.localtime().tm_hour, time.localtime().tm_min, time.localtime().tm_sec)))
-            buy_mkt1=Sfox().rawbook(market1)['asks']
-            sell_mkt1=Sfox().rawbook(market1)['bids']
-            buy_mkt2=Sfox().rawbook(market2)['asks']
-            sell_mkt2=Sfox().rawbook(market2)['bids']
+        for order in order:
+            targetList.append(order["id"])
 
-
-            spread= pd.DataFrame((buy_mkt1), columns=[str(market1)+' Asks','Size','Exchange'])
-            spread2= pd.DataFrame((sell_mkt1), columns=[str(market1)+' Bids','Size','Exchange'])
-            spread3= pd.DataFrame((buy_mkt2), columns=[str(market2)+' Asks','Size','Exchange'])
-            spread4= pd.DataFrame((sell_mkt2), columns=[str(market2)+' Bids','Size','Exchange'])
-
-            spreads=pd.concat([spread,spread2,spread3,spread4],axis=1)
-            spreads['Buy Spread']=spreads[str(market1)+' Asks']-spreads[str(market2)+' Bids']*beta
-            spreads['Sell Spread']=spreads[str(market1)+' Bids']-spreads[str(market2)+' Asks']*beta
-            print("Inventory", holdings)
-            print("Time:", timestamp)
-            display(HTML(spreads.to_html()))
-            time.sleep(0.5)
-            clear_output(wait=True)
-        if Trade==True:
-            print('Run your spread strategy: Place execution strategy here')
-'''
-
-
+        for myId in targetList:
+            if self.cancel_order(myId):
+                canceled.append(myId)  
+        return canceled
+```
