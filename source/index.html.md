@@ -544,8 +544,6 @@ Filled | The order was filled
 Done | The order was completed successfully
 
 
-
-
 ## Cancel Order
 
 ```shell
@@ -561,6 +559,43 @@ This endpoint will start cancelling the order specified.
 ### HTTP Request
 
 `DELETE https://api.sfox.com/v1/order/<order_id>`
+
+## Asset Pairs
+```shell
+curl "https://api.sfox.com/v1/markets/currency-pairs" \
+  -u "<api_key>:" \
+  -X GET
+```
+
+> Response
+
+```json
+{
+    "bchbtc": {
+        "formatted_symbol": "BCH/BTC",
+        "symbol": "bchbtc"
+    },
+    "bchusd": {
+        "formatted_symbol": "BCH/USD",
+        "symbol": "bchusd"
+    },
+    "btcusd": {
+        "formatted_symbol": "BTC/USD",
+        "symbol": "btcusd"
+    },
+    "xrpusd": {
+        "formatted_symbol": "XRP/USD",
+        "symbol": "xrpusd"
+    }
+}
+```
+
+SFOX allows for you to get a list of the asset pairs that are currently active for your account. Please note that the "symbol" key in each of the asset pair objects is the one that can be used to place buy/sell orders or request marketdata.
+
+### HTTP Request
+
+`GET https://api.sfox.com/v1/markets/currency-pairs`
+
 
 ## Algorithm IDs
 ID | Description
