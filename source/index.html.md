@@ -914,7 +914,7 @@ class PrivateSfox(Sfox):
         targetList = []
         canceled = []
 
-        for order in order:
+        for order in orders:
             targetList.append(order["id"])
 
         for myId in targetList:
