@@ -749,24 +749,24 @@ Subscriptions to the ticker feed will receive realtime trades that occur on any 
                 0.21094215,
                 "market2"
             ],
-            "asks": [
-                [
-                    0.04564,
-                    34.1074,
-                    "gemini"
-                ],
-                [
-                    0.04559969,
-                    4.8245942,
-                    "bitstamp"
-                ],
-                [
-                    0.04556277,
-                    0.507,
-                    "market2"
-                ]
+        ],
+        "asks": [
+            [
+                0.04564,
+                34.1074,
+                "gemini"
+            ],
+            [
+                0.04559969,
+                4.8245942,
+                "bitstamp"
+            ],
+            [
+                0.04556277,
+                0.507,
+                "market2"
             ]
-        },
+        ],
         "exchanges": {
             "gemini": "OK",
             "bitfinex": "OK",
