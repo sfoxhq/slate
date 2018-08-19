@@ -1,0 +1,9 @@
+version: "2"
+services:
+  serve:
+    build:
+      context: .
+    volumes:
+      - ./source:/app/source
+    ports:
+      - 4567:4567
