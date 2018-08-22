@@ -589,10 +589,6 @@ curl "https://api.sfox.com/v1/markets/currency-pairs" \
     "btcusd": {
         "formatted_symbol": "BTC/USD",
         "symbol": "btcusd"
-    },
-    "xrpusd": {
-        "formatted_symbol": "XRP/USD",
-        "symbol": "xrpusd"
     }
 }
 ```
