@@ -274,7 +274,7 @@ curl "https://api.sfox.com/v1/user/withdraw" \
 }
 ```
 
-Submits a asset withdrawal request to SFOX.  Your funds must be available before requesting withdrawal.  For fiat currency withdrawal, your bank account must be setup prior to making the withdrawal request.  You can setup your bank account by going to [Accounts / Deposits](https://api.sfox.com/#/account/deposit).
+Submits an asset withdrawal request to SFOX.  Your funds must be available before requesting withdrawal.  For fiat currency withdrawal, your bank account must be setup prior to making the withdrawal request.  You can setup your bank account by going to [Accounts / Deposits](https://api.sfox.com/#/account/deposit).
 
 <aside class="notice">If the request fails, the json result will include an error field with the reason.</aside>
 
