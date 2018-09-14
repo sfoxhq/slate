@@ -827,7 +827,7 @@ Please note that subscriptions to the orderbook will receive full orderbook snap
 </aside>
 
 # FIX Api
-For information on how to impliment the FIX protocol please contact [support@sfox.com](mailto:support@sfox.com)
+For information on how to implement the FIX protocol please contact [support@sfox.com](mailto:support@sfox.com).
 
 # Python example
 ## Public API
