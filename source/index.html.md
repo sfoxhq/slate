@@ -529,15 +529,15 @@ quote_id | the unique id of this quote
 
 #### A quote to buy $20 worth of bitcoins
 
-`POST https://quotes.staging.sfox.com/v2/partner/sfox/quote/buy/btc/usd/20/usd`
+`POST https://quotes.staging.sfox.com/v1/partner/sfox/quote/buy/btc/usd/20/usd`
 
 #### A quote to buy 2 bitcoins
 
-`POST https://quotes.staging.sfox.com/v2/partner/sfox/quote/buy/btc/usd/2/btc`
+`POST https://quotes.staging.sfox.com/v1/partner/sfox/quote/buy/btc/usd/2/btc`
 
 #### A quote to sell 2.12345678 bitcoins
 
-`POST https://quotes.staging.sfox.com/v2/partner/sfox/quote/sell/btc/usd/2.12345678/btc`
+`POST https://quotes.staging.sfox.com/v1/partner/sfox/quote/sell/btc/usd/2.12345678/btc`
 
 ## Get Quote Details
 
@@ -576,15 +576,15 @@ a quote in both the base and quote currencies.
 
 #### A quote to buy $20 worth of bitcoins
 
-`POST https://api.staging.sfox.com/v2/partner/sfox/quote/buy/btc/usd/20/usd`
+`POST https://api.staging.sfox.com/v1/partner/sfox/quote/buy/btc/usd/20/usd`
 
 #### A quote to buy 2 bitcoins
 
-`POST https://api.staging.sfox.com/v2/partner/sfox/quote/buy/btc/usd/2/btc`
+`POST https://api.staging.sfox.com/v1/partner/sfox/quote/buy/btc/usd/2/btc`
 
 #### A quote to sell 2.12345678 bitcoins
 
-`POST https://api.staging.sfox.com/v2/partner/sfox/quote/sell/btc/usd/2.12345678/btc`
+`POST https://api.staging.sfox.com/v1/partner/sfox/quote/sell/btc/usd/2.12345678/btc`
 
 ## Buy
 
