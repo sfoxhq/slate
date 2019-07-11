@@ -262,7 +262,7 @@ curl "https://api.sfox.com/v1/user/deposit/address/{currency}" \
   -H "Authorization: <api_key>" 
 ```
 
-Submit a request to create a deposit address.  Once submitted, a new address will be created allowing for a deposit of currency choice.  For fiat deposit, your bank account must be setup prior to making the deposit request.  
+Submit a request to create an additional or new crypto deposit address. Once submitted, the old and new addresses will allow for a deposit of currency choice.  For fiat deposit, your bank account must be setup prior to making the deposit request.  
 
 ### Form Parameters
 
