@@ -5,7 +5,7 @@ language_tabs:
   - shell
 
 toc_footers:
-  - <a href='/account/api'>Sign Up for a Developer Key</a>
+  - <a href='https://trade.sfox.com/account/api'>Sign Up for a Developer Key</a>
   - <a href='mailto:support@sfox.com'>Need help? Email us</a>
 
 includes:
@@ -73,7 +73,7 @@ To get the sell price simply change "buy" to "sell" in the url.
 
 Use the "price" returned to you as the price in limit order you're placing.
 
-We also return VWAP - Volume weighted average price.  "vwap" is the expected price you will pay for the entire order.  Even though the price is 383.21 in this example, you will most likely pay $383 for the entire order.  These prices are not guaranteed as the market is always moving.  
+We also return VWAP - Volume weighted average price.  "vwap" is the expected price you will pay for the entire order.  Even though the price is 383.21 in this example, you will most likely pay $383 for the entire order.  These prices are not guaranteed as the market is always moving.
 
 ### HTTP Request
 
@@ -161,7 +161,7 @@ curl "https://api.sfox.com/v1/user/balance" \
 ]
 ```
 
-Use this endpoint to access your account balance.  It returns an array of objects, each of which has details for a single asset.  
+Use this endpoint to access your account balance.  It returns an array of objects, each of which has details for a single asset.
 
 You will get Balance and Available balance.  Balance is your total balance for this asset.  Available, on the other hand, is what is available to you to trade and/or withdraw.  The difference is amount that is reserved either in an open trade or pending a withdrawal request.
 
@@ -187,29 +187,29 @@ curl "https://api.sfox.com/v1/account/transactions?limit=250&offset=0" \
 ```
 [
   {
-    'id': 12224191, 
-    'order_id': '67662454', 
-    'client_order_id': '', 
-    'day': '2018-07-29T21:30:10.000Z', 
-    'action': 'Buy', 
-    'currency': 'usd', 
+    'id': 12224191,
+    'order_id': '67662454',
+    'client_order_id': '',
+    'day': '2018-07-29T21:30:10.000Z',
+    'action': 'Buy',
+    'currency': 'usd',
     'memo': '',
-    'amount': -438.34854806, 
-    'net_proceeds': -438.34854806, 
-    'price': 465.19547184, 
-    'fees': 1.53, 
-    'status': 'done', 
-    'hold_expires': '', 
-    'tx_hash': '', 
-    'algo_name': 'Smart', 
+    'amount': -438.34854806,
+    'net_proceeds': -438.34854806,
+    'price': 465.19547184,
+    'fees': 1.53,
+    'status': 'done',
+    'hold_expires': '',
+    'tx_hash': '',
+    'algo_name': 'Smart',
     'algo_id': '200',
-    'account_balance': 3929.90349381, 
+    'account_balance': 3929.90349381,
     'AccountTransferFee': None
   }
 ]
 ```
 
-Use this endpoint to access your trade history.  It returns an array of objects, each of which has details for each individual trade.  
+Use this endpoint to access your trade history.  It returns an array of objects, each of which has details for each individual trade.
 
 
 
@@ -369,7 +369,7 @@ Parameter | Description
 --------- | -----------
 quantity | the amount of crypto assets you wish to buy
 price | the max price you are willing to pay.  The executed price will always be less than or equal to this price if the market conditions allow it, otherwise the order will not execute.
-algorithm_id | the [algorithm id](#algorithm-ids) you wish to use to execute the order (default: 200) 
+algorithm_id | the [algorithm id](#algorithm-ids) you wish to use to execute the order (default: 200)
 client_order_id | this is an optional field that will hold a user specified id for reference
 currency_pair | the asset pair you wish to trade (default: btcusd)
 
@@ -449,7 +449,7 @@ Parameter | Description
 --------- | -----------
 quantity | the amount of crypto assets you wish to buy
 price | the min price you are willing to accept.  The executed price will always be higher than or equal to this price if the market conditions allow it, otherwise the order will not execute.
-algorithm_id | the [algorithm id](#algorithm-ids) you wish to use to execute the order (default: 200) 
+algorithm_id | the [algorithm id](#algorithm-ids) you wish to use to execute the order (default: 200)
 client_order_id | this is an optional field that will hold a user specified id for reference
 currency_pair | the asset pair you wish to trade (default: btcusd)
 
@@ -727,10 +727,10 @@ Property | Type | Description
 sequence | int | The sequence number that the message was sent in.
 recipient | string | The feed that the message was sent to
 timestamp | int | The timestamp (in microseconds)
-payload | json | The payload parameter will be a JSON message that contains then data 
+payload | json | The payload parameter will be a JSON message that contains then data
 
 <aside class="notice">
-Please note that the `sequence` number sent by the websocket is not guaranteed to be in ascending order. If you detect any gaps or incorrect ordering you should reconnect. 
+Please note that the `sequence` number sent by the websocket is not guaranteed to be in ascending order. If you detect any gaps or incorrect ordering you should reconnect.
 </aside>
 
 ### Ticker Message
@@ -820,7 +820,7 @@ Subscriptions to the ticker feed will receive realtime trades that occur on any 
   }
 ```
 
-Subscriptions to one or many of the orderbook feeds will receive snapshots of the full SFOX orderbook for that pair. 
+Subscriptions to one or many of the orderbook feeds will receive snapshots of the full SFOX orderbook for that pair.
 
 <aside class="notice">
 Please note that subscriptions to the orderbook will receive full orderbook snapshots for the pair subscribed to, SFOX does not support sending changes at this time.
@@ -857,7 +857,7 @@ class Sfox:
         resource = "markets/orderbook/"+market
         res = self.__get(resource)
         return json.loads(res.text)
-   
+
     def bestBuyPrice(self, quantity):
         resource = "offer/buy?amount="+str(quantity)
         res = self.__get(resource)
@@ -885,7 +885,7 @@ class PrivateSfox(Sfox):
         url = self.url_for(resource)
         return requests.post(
             url,
-            data = data, 
+            data = data,
             auth = requests.auth.HTTPBasicAuth(self.api_key,"")
         )
 
@@ -895,30 +895,30 @@ class PrivateSfox(Sfox):
     def delete(self, resource):
         url = self.url_for(resource)
         return requests.delete(
-            url, 
+            url,
             auth = requests.auth.HTTPBasicAuth(self.api_key,"")
         )
-    
+
     def market_buy(self, quantity, pair):
         data = {"quantity": str(quantity),"currency_pair":str(pair)}
         res = self.post("orders/buy", data)
         return json.loads(res.text)
-    
+
     def market_sell(self, quantity, pair):
         data = {"quantity": str(quantity),"currency_pair": str(pair)}
         res = self.post("orders/sell", data)
         return json.loads(res.text)
-    
+
     def limit_buy(self, price, quantity, pair):
         data = {"quantity": str(quantity), "price": str(price), "currency_pair":str(pair)}
         res = self.post("orders/buy", data)
         return json.loads(res.text)
-    
+
     def limit_sell(self, price, quantity, pair):
         data = {"quantity": str(quantity), "price": str(price), "currency_pair":str(pair)}
         res = self.post("orders/sell", data)
-        return json.loads(res.text)         
-  
+        return json.loads(res.text)
+
     def balance(self):
         res = self.get("user/balance")
         return json.loads(res.text)
@@ -926,7 +926,7 @@ class PrivateSfox(Sfox):
     def get_order_status(self,order_id):
         res = self.get("order/" + str(order_id))
         return json.loads(res.text)
-    
+
     def get_trade_history(self, limit, offset):
         res = self.get("account/transactions?limit=" + str(limit) + "&offset=" + str(offset))
         return json.loads(res.text)
@@ -957,6 +957,6 @@ class PrivateSfox(Sfox):
 
         for myId in targetList:
             if self.cancel_order(myId):
-                canceled.append(myId)  
+                canceled.append(myId)
         return canceled
 ```
