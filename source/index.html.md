@@ -3,6 +3,7 @@ title: API Reference
 
 language_tabs:
   - shell
+  - python
 
 toc_footers:
   - <a href='https://trade.sfox.com/account/api'>Sign Up for a Developer Key</a>
@@ -35,6 +36,12 @@ curl "api_endpoint_here" \
   -u "<api token>:"
 ```
 
+```python
+import requests
+auth = requests.auth.HTTPBasicAuth("<api_token>", "")
+requests.get("api_endpoint_here", auth=auth)
+```
+
 > Make sure to replace <api_key> with your API key, and don't forget the colon.
 
 SFOX uses API keys to grant access. You can create a new SFOX API key at our [developer portal](https://trade.sfox.com/account/api).
@@ -53,6 +60,10 @@ You must replace `api_key` with your personal API key.
 
 ```shell
 curl "https://api.sfox.com/v1/offer/buy?amount=1"
+```
+
+```python
+requests.get("https://api.sfox.com/v1/offer/buy", params={"amount": 1}).json()
 ```
 
 > The result of the calls is something like this:
@@ -92,6 +103,10 @@ quantity||The amount of crypto assets you will be trading
 curl "https://api.sfox.com/v1/markets/orderbook/<asset_pair>"
 ```
 
+```python
+requests.get("https://api.sfox.com/v1/markets/orderbook/<asset_pair>").json()
+```
+
 > The result of the calls is an array of bids and asks:
 
 ```json
@@ -129,12 +144,6 @@ This will return the blended orderbook of all the available exchanges.
 
 `GET /v1/markets/orderbook`
 
-### Query Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-NONE
-
 # User
 
 ## Get Account Balance
@@ -142,6 +151,10 @@ NONE
 ```shell
 curl "https://api.sfox.com/v1/user/balance" \
   -u "<api_key>:"
+```
+
+```python
+requests.get("https://api.sfox.com/v1/user/balance", auth=requests.auth.HTTPBasicAuth("<api_key>", "")).json()
 ```
 
 > The above command returns JSON structured like this:
@@ -169,17 +182,19 @@ You will get Balance and Available balance.  Balance is your total balance for t
 
 `GET /v1/balance`
 
-### Query Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-NONE
-
 ## Get Trade History
 
 ```shell
-curl "https://api.sfox.com/v1/account/transactions?limit=250&offset=0" \
+curl "https://api.sfox.com/v1/account/transactions?from=0=250&to=1565114130000" \
   -u "<api_key>:"
+```
+
+```python
+requests.get(
+    "https://api.sfox.com/v1/account/transactions",
+    auth=requests.auth.HTTPBasicAuth("<api_key>", ""),
+    params={"from": 0, "to": 1565114130000}
+).json()
 ```
 
 > The above command returns JSON structured like this:
@@ -212,44 +227,52 @@ curl "https://api.sfox.com/v1/account/transactions?limit=250&offset=0" \
 Use this endpoint to access your trade history.  It returns an array of objects, each of which has details for each individual trade.
 
 
-
 ### HTTP Request
 
-`GET /v1/account/transactions?limit=250&offset=0`
+`GET /v1/account/transactions`
 
 ### Query Parameters
 
 Parameter | Default | Description
 --------- | ------- | -----------
-NONE
-
+to | 0 | Starting timestamp (in millis)
+from | utcnow | Ending timestamp (in millis)
 
 
 ## Request an ACH deposit
 
 ```shell
-curl "https://api.sfox.com/v1/user/withdraw" \
+curl "https://api.sfox.com/v1/user/bank/deposit" \
   -H "Authorization: <api_key>" \
   -d "amount=1"
+```
+
+```python
+requests.post(
+    "https://api.sfox.com/v1/user/bank/deposit",
+    auth=requests.auth.HTTPBasicAuth("<api_key>", ""),
+    json={"amount": 1}
+).json()
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
 {
+  "tx_status": 0000,
   "success": true
 }
 ```
 
-You can transfer funds from your bank account to SFOX using ACH.  You have to setup your bank account by going to [Accounts / Deposits](https://api.sfox.com/#/account/deposit).  Once you have setup your bank account, you can use this call to initiate the transfer request.
+You can transfer funds from your bank account to SFOX using ACH.  You have to setup your bank account by going to [Accounts / Deposits](https://trade.sfox.com/account).  Once you have setup your bank account, you can use this call to initiate the transfer request.
 
 <aside class="notice">If the request fails, the json result will include an error field with the reason.</aside>
 
 ### HTTP Request
 
-`POST /v1/user/deposit`
+`POST /v1/user/bank/deposit`
 
-### Form Parameters
+### Form/JSON Parameters
 
 Parameter | Description
 --------- | -----------
@@ -260,6 +283,22 @@ amount | The amount you wish to deposit from your bank account
 ```shell
 curl "https://api.sfox.com/v1/user/deposit/address/{currency}" \
   -H "Authorization: <api_key>"
+```
+
+```python
+requests.post(
+    "https://api.sfox.com/v1/user/deposit/address/{currency}",
+    auth=requests.auth.HTTPBasicAuth("<api_key>", ""),
+).json()
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "address": "<address>",
+  "currency": "<currency>"
+}
 ```
 
 Submit a request to create an additional or new crypto deposit address. Once submitted, the old and new addresses will allow for a deposit of currency choice.  For fiat deposit, your bank account must be setup prior to making the deposit request.
@@ -281,6 +320,14 @@ curl "https://api.sfox.com/v1/user/withdraw" \
   -d "currency=usd"
 ```
 
+```python
+requests.post(
+    "https://api.sfox.com/v1/user/withdraw",
+    auth=requests.auth.HTTPBasicAuth("<api_key>", ""),
+    json={"amount": 1, "address": "<address if crypto>", "currency": "<currency>"}
+).json()
+```
+
 > The above command returns JSON structured like this:
 
 ```json
@@ -297,7 +344,7 @@ Submits a asset withdrawal request to SFOX.  Your funds must be available before
 
 `POST /v1/user/withdraw`
 
-### Form Parameters
+### Form/JSON Parameters
 
 Parameter | Description
 --------- | -----------
@@ -315,6 +362,14 @@ curl "https://api.sfox.com/v1/orders/buy" \
   -u "<api_key>:" \
   -d "quantity=1" \
   -d "currency_pair=btcusd"
+```
+
+```python
+requests.post(
+    "https://api.sfox.com/v1/orders/buy",
+    auth=requests.auth.HTTPBasicAuth("<api_key>", ""),
+    json={"quantity": 1, "currency_pair": "<currency_pair>"}
+).json()
 ```
 
 > The above command returns the same JSON object as the Order Status API, and it is structured like this:
@@ -339,11 +394,12 @@ This is a market order request to buy certain quantity of a crypto assets.  Sinc
 
 `POST /v1/orders/buy`
 
-### Query Parameters
+### Form/JSON Parameters
 
 Parameter | Description
 --------- | -----------
 quantity | the amount of crypto assets you wish to buy
+currency_pair | the currency pair
 
 
 ## Buy (Limit Order)
@@ -354,6 +410,21 @@ curl "https://api.sfox.com/v1/orders/buy" \
   -d "quantity=1" \
   -d "price=10" \
   -d "currency_pair=btcusd"
+```
+
+```python
+requests.post(
+    "https://api.sfox.com/v1/orders/buy",
+    auth=requests.auth.HTTPBasicAuth("<api_key>", ""),
+    json={
+        "quantity": 1,
+        "price": 10,
+        "currency_pair": "<currency_pair>",
+        # optional:
+        "algorithm_id": 200,
+        "client_order_id": "<client provided reference>",
+    }
+).json()
 ```
 
 > The above command returns the same JSON object as the Order Status API, and it is structured like this:
@@ -383,10 +454,10 @@ This endpoint initiates a buy order for crypto assets at the specified amount wi
 Parameter | Description
 --------- | -----------
 quantity | the amount of crypto assets you wish to buy
+currency_pair | the asset pair you wish to trade (default: btcusd)
 price | the max price you are willing to pay.  The executed price will always be less than or equal to this price if the market conditions allow it, otherwise the order will not execute.
 algorithm_id | the [algorithm id](#algorithm-ids) you wish to use to execute the order (default: 200)
 client_order_id | this is an optional field that will hold a user specified id for reference
-currency_pair | the asset pair you wish to trade (default: btcusd)
 
 
 ## Sell (Market Order)
@@ -396,6 +467,17 @@ curl "https://api.sfox.com/v1/orders/sell" \
   -u "<api_key>:" \
   -d "quantity=1" \
   -d "currency_pair=btcusd"
+```
+
+```python
+requests.post(
+    "https://api.sfox.com/v1/orders/sell",
+    auth=requests.auth.HTTPBasicAuth("<api_key>", ""),
+    json={
+        "quantity": 1,
+        "currency_pair": "<currency_pair>",
+    }
+).json()
 ```
 
 > The above command returns the same JSON object as the Order Status API, and it is structured like this:
@@ -420,11 +502,12 @@ This is a market order request to sell certain quantity of crypto assets.  Since
 
 `POST /v1/orders/sell`
 
-### Query Parameters
+### Form/JSON Parameters
 
 Parameter | Description
 --------- | -----------
 quantity | the amount of crypto assets you wish to buy
+currency_pair | the currency pair to trade
 
 ## Sell (Limit Order)
 
@@ -434,6 +517,21 @@ curl "https://api.sfox.com/v1/orders/sell" \
   -d "quantity=1" \
   -d "price=10" \
   -d "currency_pair=btcusd"
+```
+
+```python
+requests.post(
+    "https://api.sfox.com/v1/orders/sell",
+    auth=requests.auth.HTTPBasicAuth("<api_key>", ""),
+    json={
+        "quantity": 1,
+        "price": 10,
+        "currency_pair": "<currency_pair>",
+        # optional
+        "algorithm_id": 200,
+        "client_order_id":
+    }
+).json()
 ```
 
 > The above command returns the same JSON object as the Order Status API, and it is structured like this:
@@ -458,7 +556,7 @@ This endpoint initiates a sell order for the specified amount with the specified
 
 `POST /v1/orders/sell`
 
-### Query Parameters
+### Form/JSON Parameters
 
 Parameter | Description
 --------- | -----------
@@ -469,13 +567,18 @@ client_order_id | this is an optional field that will hold a user specified id f
 currency_pair | the asset pair you wish to trade (default: btcusd)
 
 
-
-
 ## Get Order Status
 
 ```shell
-curl "https://api.sfox.com/v1/order/<order_id>" \
+curl "https://api.sfox.com/v1/orders/<order_id>" \
   -u "<api_key>:"
+```
+
+```python
+requests.post(
+    "https://api.sfox.com/v1/orders/<order_id>",
+    auth=requests.auth.HTTPBasicAuth("<api_key>", "")
+).json()
 ```
 
 > The above command returns a JSON structured like this:
@@ -494,11 +597,11 @@ curl "https://api.sfox.com/v1/order/<order_id>" \
 }
 ```
 
-This endpoint returns the status of the order specified by the <order_id> url parameter
+This endpoint returns the status of the order specified by the `<order_id>` url parameter
 
 ### HTTP Request
 
-`GET /v1/order/<order_id>`
+`GET /v1/orders/<order_id>`
 
 ### Possible "status" values
 
@@ -518,6 +621,10 @@ Done | The order was completed successfully
 ```shell
 curl "https://api.sfox.com/v1/orders" \
   -u "<api_key>:"
+```
+
+```python
+requests.get("https://api.sfox.com/v1/orders", auth=requests.auth.HTTPBasicAuth("<api_key>", "")).json()
 ```
 
 > The above command returns an array of Order Status JSON objects structured like this:
@@ -569,9 +676,16 @@ Done | The order was completed successfully
 ## Cancel Order
 
 ```shell
-curl "https://api.sfox.com/v1/order/<order_id>" \
+curl "https://api.sfox.com/v1/orders/<order_id>" \
   -u "<api_key>:" \
   -X DELETE
+```
+
+```python
+requests.delete(
+    "https://api.sfox.com/v1/orders/<order_id>",
+    auth=requests.auth.HTTPBasicAuth("<api_key>", "")
+).json()
 ```
 
 > The above command does not return anything.  To check on the cancellation status of the order you will need to poll the get order status api.
@@ -580,13 +694,21 @@ This endpoint will start cancelling the order specified.
 
 ### HTTP Request
 
-`DELETE /v1/order/<order_id>`
+`DELETE /v1/orders/<order_id>`
 
 ## Asset Pairs
+
 ```shell
 curl "https://api.sfox.com/v1/markets/currency-pairs" \
   -u "<api_key>:" \
   -X GET
+```
+
+```python
+requests.get(
+    "https://api.sfox.com/v1/markets/currency-pairs",
+    auth=requests.auth.HTTPBasicAuth("<api_key>", "")
+).json()
 ```
 
 > Response
@@ -914,7 +1036,8 @@ class Sfox:
     def get_order_status(self, order_id):
         return self._get("order/" + str(order_id))
 
-    def get_transaction_history(self, limit=50, offset=0):
+    def get_transaction_history(self, from_ts=50, to_ts=0):
+        # TODO: update for using timestamps from/to
         return self._get("account/transactions", {"limit": limit, "offset": offset})
 
     def get_active_orders(self):
