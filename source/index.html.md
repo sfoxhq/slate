@@ -259,10 +259,10 @@ amount | The amount you wish to deposit from your bank account
 
 ```shell
 curl "https://api.sfox.com/v1/user/deposit/address/{currency}" \
-  -H "Authorization: <api_key>" 
+  -H "Authorization: <api_key>"
 ```
 
-Submit a request to create an additional or new crypto deposit address. Once submitted, the old and new addresses will allow for a deposit of currency choice.  For fiat deposit, your bank account must be setup prior to making the deposit request.  
+Submit a request to create an additional or new crypto deposit address. Once submitted, the old and new addresses will allow for a deposit of currency choice.  For fiat deposit, your bank account must be setup prior to making the deposit request.
 
 ### Form Parameters
 
@@ -845,113 +845,83 @@ Please note that subscriptions to the orderbook will receive full orderbook snap
 For information on how to implement the FIX protocol please contact [support@sfox.com](mailto:support@sfox.com).
 
 # Python example
-## Public API
+
 ```python
-import json
-import time
 import requests
 
+
 class Sfox:
-    def __init__(self, endpoint="api.sfox.com", version="v1"):
-        self.endpoint = endpoint.lower()
-        self.apiVersion = version.lower()
+    def __init__(self, api_key=None, endpoint="api.sfox.com", version="v1"):
+        self.session = requests.Session()
+        if api_key:
+            self.session.auth = requests.auth.HTTPBasicAuth(api_key, "")
+        self.host = "https://" +  endpoint + "/" + version
 
     def url_for(self, resource):
-        return "https://" + self.endpoint + "/" + self.apiVersion + "/" + resource
+        return self.host + "/" + resource
 
-    def get(self, resource, apiKey=None):
-        resource = resource.lower()
-        auth = None
-        if apiKey:
-            auth = requests.auth.HTTPBasicAuth(apiKey, "")
-        url = self.url_for(resource)
-        return requests.get(url, auth=auth)
+    def _request(self, method, resource, raise_for_status=True, **kwargs):
+        r = self.session.request(method.upper(), self.url_for(resource.lower()), **kwargs)
+        if raise_for_status:
+            r.raise_for_status()
+        return r.json()
+
+    def _get(self, resource, params=None):
+        return self._request("GET", resource, params=params)
+
+    def _post(self, resource, data=None, json=None):
+        return self._request("POST", resource, data=data, json=json)
+
+    def _delete(self, resource):
+        return self._request("DELETE", resource)
+
+    # Public Endpoints
 
     def orderbook(self, market):
         market = market.lower()
-        resource = "markets/orderbook/"+market
-        res = self.__get(resource)
-        return json.loads(res.text)
+        resource = "markets/orderbook/" + market
+        return self._get(resource)
 
-    def bestBuyPrice(self, quantity):
-        resource = "offer/buy?amount="+str(quantity)
-        res = self.__get(resource)
-        data = json.loads(res.text)
-        return data["price"]
+    def best_buy_price(self, quantity):
+        resp = self._get("offer/buy", params={"amount": quantity})
+        return resp["price"]
 
-    def bestSellPrice(self, quantity):
-        resource = "offer/sell?amount="+str(quantity)
-        res = self.__get(resource)
-        data = json.loads(res.text)
-        return data["price"]
-```
+    def best_sell_price(self, quantity):
+        resp = self._get("offer/sell", params={"amount": quantity})
+        return resp["price"]
 
-## Private API
-```python
-class PrivateSfox(Sfox):
-    def __init__(self, api_key, endpoint="api.sfox.com", version="v1"):
-        self.endpoint = endpoint
-        self.apiVersion = version
-        self.api_key = api_key
-        super().__init__(endpoint, version)
-
-    def post(self, resource, data):
-        resource = resource.lower()
-        url = self.url_for(resource)
-        return requests.post(
-            url,
-            data = data,
-            auth = requests.auth.HTTPBasicAuth(self.api_key,"")
-        )
-
-    def get(self, resource):
-        return super().get(resource, self.api_key)
-
-    def delete(self, resource):
-        url = self.url_for(resource)
-        return requests.delete(
-            url,
-            auth = requests.auth.HTTPBasicAuth(self.api_key,"")
-        )
+    # Private Endpoints
 
     def market_buy(self, quantity, pair):
-        data = {"quantity": str(quantity),"currency_pair":str(pair)}
-        res = self.post("orders/buy", data)
-        return json.loads(res.text)
+        data = {"quantity": quantity,"currency_pair": pair}
+        return self._post("orders/buy", json=data)
 
     def market_sell(self, quantity, pair):
-        data = {"quantity": str(quantity),"currency_pair": str(pair)}
-        res = self.post("orders/sell", data)
-        return json.loads(res.text)
+        data = {"quantity": quantity,"currency_pair": pair}
+        return self._post("orders/sell", json=data)
 
     def limit_buy(self, price, quantity, pair):
-        data = {"quantity": str(quantity), "price": str(price), "currency_pair":str(pair)}
-        res = self.post("orders/buy", data)
-        return json.loads(res.text)
+        data = {"quantity": quantity, "price": price, "currency_pair": pair}
+        return self._post("orders/buy", json=data)
 
     def limit_sell(self, price, quantity, pair):
-        data = {"quantity": str(quantity), "price": str(price), "currency_pair":str(pair)}
-        res = self.post("orders/sell", data)
-        return json.loads(res.text)
+        data = {"quantity": str(quantity), "price": str(price), "currency_pair": pair}
+        return self._post("orders/sell", json=data)
 
     def balance(self):
-        res = self.get("user/balance")
-        return json.loads(res.text)
+        return self._get("user/balance")
 
-    def get_order_status(self,order_id):
-        res = self.get("order/" + str(order_id))
-        return json.loads(res.text)
+    def get_order_status(self, order_id):
+        return self._get("order/" + str(order_id))
 
-    def get_trade_history(self, limit, offset):
-        res = self.get("account/transactions?limit=" + str(limit) + "&offset=" + str(offset))
-        return json.loads(res.text)
+    def get_transaction_history(self, limit=50, offset=0):
+        return self._get("account/transactions", {"limit": limit, "offset": offset})
 
     def get_active_orders(self):
-        res = self.get("orders")
-        return json.loads(res.text)
+        return self._get("orders")
 
-    def cancel_order(self,order_id):
-        res = self.delete("order/" + str(order_id))
+    def cancel_order(self, order_id):
+        res = self._delete("order/" + str(order_id))
         order = self.get_order_status(order_id)
         if order["status"] == "Canceled":
             return True
@@ -959,19 +929,38 @@ class PrivateSfox(Sfox):
 
     def cancel_last_order(self):
         orders = self.get_active_orders()
+        if not orders:
+            raise ValueError("No active orders to cancel")
         last_order = orders[0]["id"]
         return self.cancel_order(last_order)
 
     def cancel_all_orders(self):
-        orders = self.get_active_orders()
-        targetList = []
         canceled = []
 
-        for order in orders:
-            targetList.append(order["id"])
+        for order in self.get_active_orders():
+            if self.cancel_order(order["id"]):
+                canceled.append(order["id"])
 
-        for myId in targetList:
-            if self.cancel_order(myId):
-                canceled.append(myId)
         return canceled
+
+
+if __name__ == "__main__":
+    import time
+
+    sfox = Sfox("my_sfox_api_key")
+
+    order = sfox.limit_buy(10000, 1, "btcusd")
+    for _ in range(10):
+        placed_order = sfox.get_order_status(order["id"])
+        if placed_order["status"] == "Done":
+            print("Order complete")
+            break
+
+        time.sleep(6)
+    else:
+        print("Canceling order", order["id"])
+        if sfox.cancel_order(order["id"]):
+            print("Order Canceled")
+        else:
+            print("Order cancellation not confirmed")
 ```
