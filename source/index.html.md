@@ -419,8 +419,8 @@ requests.post(
     json={
         "quantity": 1,
         "price": 10,
-        "currency_pair": "<currency_pair>",
         # optional:
+        "currency_pair": "<currency_pair>",
         "algorithm_id": 200,
         "client_order_id": "<client provided reference>",
     }
@@ -526,8 +526,8 @@ requests.post(
     json={
         "quantity": 1,
         "price": 10,
-        "currency_pair": "<currency_pair>",
         # optional
+        "currency_pair": "<currency_pair>",
         "algorithm_id": 200,
         "client_order_id":
     }
