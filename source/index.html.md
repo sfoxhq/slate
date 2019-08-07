@@ -235,8 +235,8 @@ Use this endpoint to access your trade history.  It returns an array of objects,
 
 Parameter | Default | Description
 --------- | ------- | -----------
-to | 0 | Starting timestamp (in millis)
-from | utcnow | Ending timestamp (in millis)
+from | 0 | Starting timestamp (in millis)
+to | utcnow | Ending timestamp (in millis)
 
 
 ## Request an ACH deposit
