@@ -969,6 +969,8 @@ For information on how to implement the FIX protocol please contact [support@sfo
 # Python example
 
 ```python
+import time
+
 import requests
 
 
@@ -1036,9 +1038,10 @@ class Sfox:
     def get_order_status(self, order_id):
         return self._get("order/" + str(order_id))
 
-    def get_transaction_history(self, from_ts=50, to_ts=0):
-        # TODO: update for using timestamps from/to
-        return self._get("account/transactions", {"limit": limit, "offset": offset})
+    def get_transaction_history(self, from_ts=0, to_ts=None):
+        if to_ts is None:
+            to_ts = int(time.time() * 1000)
+        return self._get("account/transactions", {"from": from_ts, "to": to_ts})
 
     def get_active_orders(self):
         return self._get("orders")
