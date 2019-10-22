@@ -741,7 +741,7 @@ SFOX allows for you to get a list of the asset pairs that are currently active f
 ID | Description
 --------- | -----------
 200 | Smart Routing
-301 | Goliath
+301 | Gorilla
 302 | Tortoise
 303 | Hare
 304 | Stop-Loss
