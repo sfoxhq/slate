@@ -78,7 +78,7 @@ requests.get("https://api.sfox.com/v1/offer/buy", params={"amount": 1}).json()
 }
 ```
 
-This will return the price you need to specify for a limir order to execute fully. Please note that price fluctuates very quickly and this price is based on the data available at that moment.  If you want to trade now, we recommend using Buy Now and Sell Now calls and not limit orders.
+This will return the price you need to specify for a limit order to execute fully. Please note that price fluctuates very quickly and this price is based on the data available at that moment.  If you want to trade now, we recommend using Buy Now and Sell Now calls and not limit orders.
 
 To get the sell price simply change "buy" to "sell" in the url.
 
