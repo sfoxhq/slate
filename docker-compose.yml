@@ -1,9 +1,10 @@
-version: "2"
+version: "3.4"
+
 services:
-  serve:
+  slate:
     build:
       context: .
     volumes:
-      - ./source:/app/source
+      - "${PWD}:/app"
     ports:
       - 4567:4567
