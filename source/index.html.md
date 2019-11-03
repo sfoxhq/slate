@@ -17,7 +17,9 @@ search: true
 
 # Introduction
 
-Welcome to the SFOX API! The API allows you to connect your application to SFOX, execute trades, and deposit and withdraw crypto assets.
+Welcome to the SFOX API!
+
+SFOX offers a private REST API and Websocket feed to access market data, manage your account, and manage orders.
 
 # Endpoints
 
