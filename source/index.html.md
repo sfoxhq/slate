@@ -965,7 +965,8 @@ Subscriptions to one or many of the orderbook feeds will receive snapshots of th
 Please note that subscriptions to the orderbook will receive full orderbook snapshots for the pair subscribed to, SFOX does not support sending changes at this time.
 </aside>
 
-# FIX Api
+# FIX API
+
 For information on how to implement the FIX protocol please contact [support@sfox.com](mailto:support@sfox.com).
 
 # Python example
