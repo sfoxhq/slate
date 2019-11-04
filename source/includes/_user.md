@@ -109,9 +109,9 @@ Key | Example | Description
 --- | ----------- | -----------
 id | | Transaction ID
 order\_id | | Order ID, if applicable
-client\_order\_id | | The order ID that the client requested via a [new order](#TODO)
+client\_order\_id | | The order ID that the client requested via a [buy](#place-a-buy-order) or [sell](#place-a-sell-order) order
 day | 2019-07-31T17:26:30.000Z | The timestamp of the transaction, in ISO8601 format
-action | Deposit | The action, this can be one of "Deposit", "Buy", ...??? TODO
+action | Deposit | The action, this can be one of "Deposit", "Withdraw", "Buy", "Sell"
 currency | btc | The base currency
 memo | |
 amount | 0.00262916 | Amount of the transaction of the `currency`

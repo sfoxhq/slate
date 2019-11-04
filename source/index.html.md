@@ -15,8 +15,8 @@ includes:
   - endpoints
   - market_data
   - user
-  - orders
   - algo_ids
+  - orders
   - websockets
   - fix
   - errors
