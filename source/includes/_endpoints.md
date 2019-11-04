@@ -86,7 +86,7 @@ pair | N | btcusd | The pair you will be trading
 Key | Description
 --- | -----------
 quantity | The amount to buy or sell
-vwap | "Volume Weighted Average Price", the price the user can expect to receive if the order is executed. Even though the price is $383.21 in this example, you will most likely pay $383 for the entire order. THese prices are not guaranteed as the market is always moving.
+vwap | "Volume Weighted Average Price", the price the user can expect to receive if the order is executed. Even though the price is $383.21 in this example, you will most likely pay $383 for the entire order. These prices are not guaranteed as the market is always moving.
 price | the limit price the user must specify to achieve the VWAP price at execution
 fees | the expected fee for executing this order
 total | the total cost of the order
