@@ -73,31 +73,123 @@ requests.get("https://api.sfox.com/v1/markets/orderbook/<asset_pair>").json()
 
 ```json
 {
-  "asks": [
-    [8155.1, 0.3881078, "gemini"],
-    [8155.4, 0.42019816, "gemini"],
-    [8155.41, 0.64771848, "gemini"],
-    [8157.04, 3.9171, "itbit"],
-    [8157.97, 1.3509, "itbit"],
-    [8159.24, 2.04259106, "bitstamp"]
-  ],
   "bids": [
-    [8169.99, 0.00196, "gemini"],
-    [8169, 0.0921289, "bitfinex"],
-    [8168.61, 0.001, "bitstamp"],
-    [8168.51, 1.50982744, "itbit"],
-    [8168.47, 0.001, "bitfinex"],
-    [8168.26, 0.001, "bitfinex"]
-  ],
-  "currency": "usd",
-  "exchanges": {
-    "bitfinex": "OK",
-    "bitstamp": "OK",
-    "gemini": "OK",
-    "itbit": "OK"
+    [
+      9458.12,
+      1e-08,
+      "gemini"
+    ],
+    [
+      9456,
+      1,
+      "itbit"
+    ],
+    [
+      9453,
+      0.73553115,
+      "itbit"
+    ],
+    // truncated
+  "asks": [
+    [
+      9455.55,
+      2.03782954,
+      "market1"
+    ],
+    [
+      9455.56,
+      0.9908,
+      "market1"
+    ],
+    [
+      9455.59,
+      0.60321264,
+      "market1"
+    ],
+    // truncated
+  "market_making": {
+    "bids": [
+      [
+        9447.34,
+        2,
+        "bitstamp"
+      ],
+      [
+        9452.01,
+        0.60321264,
+        "market1"
+      ],
+      [
+        9452.31,
+        0.47488688,
+        "bittrex"
+      ],
+      [
+        9456,
+        1,
+        "itbit"
+      ],
+      [
+        9458.12,
+        1e-08,
+        "gemini"
+      ]
+    ],
+    "asks": [
+      [
+        9458.13,
+        2.07196048,
+        "gemini"
+      ],
+      [
+        9457.75,
+        0.14748797,
+        "itbit"
+      ],
+      [
+        9456,
+        0.1686167,
+        "bittrex"
+      ],
+      [
+        9455.68,
+        0.742406,
+        "bitstamp"
+      ],
+      [
+        9455.55,
+        2.03782954,
+        "market1"
+      ]
+    ]
   },
-  "lastupdated": 1532994078139,
-  "pair": "btcusd"}
+  "timestamps": {
+    "gemini": [
+      1572903458537,
+      1572903458538
+    ],
+    "bitstamp": [
+      1572903458199,
+      1572903458199
+    ],
+    "itbit": [
+      1572903458414,
+      1572903458416
+    ],
+    "bittrex": [
+      1572903458517,
+      1572903458517
+    ],
+    "market1": [
+      1572903458071,
+      1572903458071
+    ]
+  },
+  "lastupdated": 1572903458756,
+  "pair": "btcusd",
+  "currency": "usd",
+  "lastpublished": 1572903458798
+}
 ```
 
 ### HTTP Request
