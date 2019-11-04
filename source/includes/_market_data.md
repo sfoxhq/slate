@@ -27,7 +27,7 @@ This will return the current available price to buy or sell a user-specified qua
 To get the sell price simply change `buy` to `sell` in the url.
 
 <aside class="notice">
-    Prices can fluctuate very quickly and these prices are based on the data available at that moment. More price data is available through SFOX's <a href="#websocket">Websocket API</a>, if you want to trade now we recommend using a market <a href="buy-market-order">buy</a> or <a href="#sell-market-order">sell</a> order.
+    Prices can fluctuate very quickly and these prices are based on the data available at that moment. More price data is available through SFOX's <a href="#websocket">Websocket API</a>, if you want to trade now we recommend using a market <a href="#place-a-buy-order">buy</a> or <a href="#place-a-sell-order">sell</a> order.
 </aside>
 
 ### HTTP Request
