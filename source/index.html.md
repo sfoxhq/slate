@@ -13,6 +13,9 @@ toc_footers:
 includes:
   - introduction
   - endpoints
+  - market_data
+  - user
+  - orders
   - algo_ids
   - websockets
   - fix
