@@ -32,9 +32,9 @@ The API key should be included in all API requests to the server in the `Authori
     You must replace `api_key` with your personal API key.
 </aside>
 
-# Price Data
+# Market Data
 
-## Get Best Price
+## Smart Routing Order Data
 
 ```shell
 $ curl "https://api.sfox.com/v1/offer/buy?amount=1"
@@ -85,13 +85,15 @@ pair | N | btcusd | The pair you will be trading
 
 Key | Description
 --- | -----------
-quantity | The amount to buy or sell
+quantity | Amount to buy or sell
 vwap | "Volume Weighted Average Price", the price the user can expect to receive if the order is executed. Even though the price is $383.21 in this example, you will most likely pay $383 for the entire order. These prices are not guaranteed as the market is always moving.
-price | the limit price the user must specify to achieve the VWAP price at execution
-fees | the expected fee for executing this order
-total | the total cost of the order
+price | Limit price the user must specify to achieve the VWAP price at execution
+fees | Expected fee for executing this order
+total | Total cost of the order
 
 ## Get Orderbook
+
+Get the blended L2 orderbook data of our connected exchanges, including the top bids and asks and the location of those bids and asks.
 
 ```shell
 curl "https://api.sfox.com/v1/markets/orderbook/<asset_pair>"
@@ -131,8 +133,6 @@ requests.get("https://api.sfox.com/v1/markets/orderbook/<asset_pair>").json()
   "lastupdated": 1532994078139,
   "pair": "btcusd"}
 ```
-
-Get the blended L2 orderbook data of our connected exchanges, including the top bids and asks and the location of those bids and asks.
 
 ### HTTP Request
 
