@@ -169,9 +169,9 @@ Parameter | Description
 --------- | -----------
 amount | The amount you wish to deposit from your bank account
 
-## Crypto Transfers
+## Deposit
 
-### List Available Addresses
+### List Available Crypto Addresses
 
 List the available crypto asset addresses for deposits to your account.
 
@@ -215,7 +215,7 @@ key | description
 address | Crypto address to use for deposits
 currency | Crypto asset
 
-### Create an Address
+### Create a Deposit Address
 
 Generate a new deposit address for the crypto asset of your choosing
 
@@ -242,7 +242,7 @@ requests.post(
 
 Parameter | Description
 --------- | -----------
-currency | Currency of choice: btc, bch, eth, ltc
+currency | Currency of choice: btc, bch, eth, ltc, bsv, etc
 
 #### Response Body
 

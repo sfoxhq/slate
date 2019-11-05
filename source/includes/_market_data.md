@@ -22,12 +22,12 @@ requests.get("https://api.sfox.com/v1/offer/buy", params={"amount": 1}).json()
 }
 ```
 
-This will return the current available price to buy or sell a user-specified quantity of an asset.
+This will return the current available price to buy or sell a user-specified quantity of an asset using SFOX's Smart Order Routing.
 
 To get the sell price simply change `buy` to `sell` in the url.
 
 <aside class="notice">
-    Prices can fluctuate very quickly and these prices are based on the data available at that moment. More price data is available through SFOX's <a href="#websocket-feed">Websocket API</a>, if you want to trade now we recommend using a market <a href="#place-a-buy-order">buy</a> or <a href="#place-a-sell-order">sell</a> order.
+    Prices can fluctuate very quickly and these prices are based on the data available at that moment. More current price data is available through SFOX's <a href="#websocket-feed">Websocket API</a>.
 </aside>
 
 ### HTTP Request
@@ -53,7 +53,7 @@ Key | Description
 --- | -----------
 quantity | Quantity to buy or sell
 vwap | "Volume Weighted Average Price", the price the user can expect to receive if the order is executed. Even though the price is $383.21 in this example, you will most likely pay $383 for the entire order. These prices are not guaranteed as the market is always moving.
-price | Limit price the user must specify to achieve the VWAP price at execution
+price | Limit price the user must specify when placing the order to achieve the VWAP price at execution
 fees | Expected fee for executing this order
 total | Total cost of the order
 
@@ -210,7 +210,7 @@ pair | The trading pair
 currency | The quote currency
 asks | List of asks, size, and exchange
 bids | List of the bids, size, and exchange
-market\_making |
+market\_making | List of the best bid and ask on each exchange
 timestamps | A list of exchanges and the latest timestamps of the orderbook
 lastupdated | Last update of the blended orderbook
 lastpublished | Last time an orderbook update was published

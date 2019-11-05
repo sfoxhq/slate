@@ -1,6 +1,6 @@
 # Algorithm IDs
 
-SFOX allows you to make different trade types based on our suite of algorithms, for details on the types and when to use them see [SFOX Algorithms](https://www.sfox.com/algos.html)
+SFOX allows you to choose from our suite of execution algorithms to place different types of trades. For details on the algorithms and when to use them see [SFOX Algorithms](https://www.sfox.com/algos.html)
 
 ID | Description
 --------- | -----------
