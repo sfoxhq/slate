@@ -57,6 +57,10 @@ price | Limit price the user must specify when placing the order to achieve the 
 fees | Expected fee for executing this order
 total | Total cost of the order
 
+<aside class="notice">
+    VWAP, Price, Fees, and Total are in the quote currency (e.g. USD for a btcusd pair).
+</aside>
+
 ## Get Orderbook
 
 Get the blended L2 orderbook data of our connected exchanges, including the top bids and asks and the location of those bids and asks.
