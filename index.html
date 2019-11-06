@@ -201,7 +201,7 @@
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;]">
+  <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;python&quot;,&quot;javascript&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -212,6 +212,9 @@
       <img src="images/logo.png" class="logo" alt="Logo" />
         <div class="lang-selector">
               <a href="#" data-language-name="shell">shell</a>
+              <a href="#" data-language-name="ruby">ruby</a>
+              <a href="#" data-language-name="python">python</a>
+              <a href="#" data-language-name="javascript">javascript</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -222,96 +225,19 @@
             <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
           </li>
           <li>
-            <a href="#endpoints" class="toc-h1 toc-link" data-title="Endpoints">Endpoints</a>
-          </li>
-          <li>
             <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
           </li>
           <li>
-            <a href="#price-data" class="toc-h1 toc-link" data-title="Price Data">Price Data</a>
+            <a href="#kittens" class="toc-h1 toc-link" data-title="Kittens">Kittens</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-best-price" class="toc-h2 toc-link" data-title="Get Best Price">Get Best Price</a>
+                    <a href="#get-all-kittens" class="toc-h2 toc-link" data-title="Get All Kittens">Get All Kittens</a>
                   </li>
                   <li>
-                    <a href="#get-orderbook" class="toc-h2 toc-link" data-title="Get Orderbook">Get Orderbook</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#user" class="toc-h1 toc-link" data-title="User">User</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#get-account-balance" class="toc-h2 toc-link" data-title="Get Account Balance">Get Account Balance</a>
+                    <a href="#get-a-specific-kitten" class="toc-h2 toc-link" data-title="Get a Specific Kitten">Get a Specific Kitten</a>
                   </li>
                   <li>
-                    <a href="#get-trade-history" class="toc-h2 toc-link" data-title="Get Trade History">Get Trade History</a>
-                  </li>
-                  <li>
-                    <a href="#request-an-ach-deposit" class="toc-h2 toc-link" data-title="Request an ACH deposit">Request an ACH deposit</a>
-                  </li>
-                  <li>
-                    <a href="#withdraw-funds" class="toc-h2 toc-link" data-title="Withdraw Funds">Withdraw Funds</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#orders" class="toc-h1 toc-link" data-title="Orders">Orders</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#buy-market-order" class="toc-h2 toc-link" data-title="Buy (Market Order)">Buy (Market Order)</a>
-                  </li>
-                  <li>
-                    <a href="#buy-limit-order" class="toc-h2 toc-link" data-title="Buy (Limit Order)">Buy (Limit Order)</a>
-                  </li>
-                  <li>
-                    <a href="#sell-market-order" class="toc-h2 toc-link" data-title="Sell (Market Order)">Sell (Market Order)</a>
-                  </li>
-                  <li>
-                    <a href="#sell-limit-order" class="toc-h2 toc-link" data-title="Sell (Limit Order)">Sell (Limit Order)</a>
-                  </li>
-                  <li>
-                    <a href="#get-order-status" class="toc-h2 toc-link" data-title="Get Order Status">Get Order Status</a>
-                  </li>
-                  <li>
-                    <a href="#get-active-orders" class="toc-h2 toc-link" data-title="Get Active Orders">Get Active Orders</a>
-                  </li>
-                  <li>
-                    <a href="#cancel-order" class="toc-h2 toc-link" data-title="Cancel Order">Cancel Order</a>
-                  </li>
-                  <li>
-                    <a href="#asset-pairs" class="toc-h2 toc-link" data-title="Asset Pairs">Asset Pairs</a>
-                  </li>
-                  <li>
-                    <a href="#algorithm-ids" class="toc-h2 toc-link" data-title="Algorithm IDs">Algorithm IDs</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#websocket" class="toc-h1 toc-link" data-title="Websocket">Websocket</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#connecting" class="toc-h2 toc-link" data-title="Connecting">Connecting</a>
-                  </li>
-                  <li>
-                    <a href="#managing-subscriptions" class="toc-h2 toc-link" data-title="Managing Subscriptions">Managing Subscriptions</a>
-                  </li>
-                  <li>
-                    <a href="#message-format" class="toc-h2 toc-link" data-title="Message Format">Message Format</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#fix-api" class="toc-h1 toc-link" data-title="FIX Api">FIX Api</a>
-          </li>
-          <li>
-            <a href="#python-example" class="toc-h1 toc-link" data-title="Python example">Python example</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#public-api" class="toc-h2 toc-link" data-title="Public API">Public API</a>
-                  </li>
-                  <li>
-                    <a href="#private-api" class="toc-h2 toc-link" data-title="Private API">Private API</a>
+                    <a href="#delete-a-specific-kitten" class="toc-h2 toc-link" data-title="Delete a Specific Kitten">Delete a Specific Kitten</a>
                   </li>
               </ul>
           </li>
@@ -320,74 +246,87 @@
           </li>
       </ul>
         <ul class="toc-footer">
-            <li><a href='/account/api'>Sign Up for a Developer Key</a></li>
-            <li><a href='mailto:support@sfox.com'>Need help? Email us</a></li>
+            <li><a href='#'>Sign Up for a Developer Key</a></li>
+            <li><a href='https://github.com/lord/slate'>Documentation Powered by Slate</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
-<p>Welcome to the SFOX API! The API allows you to connect your application to SFOX, execute trades, and deposit and withdraw crypto assets.</p>
-<h1 id='endpoints'>Endpoints</h1>
-<table><thead>
-<tr>
-<th>Endpoint</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Production</td>
-<td>https://api.sfox.com</td>
-</tr>
-<tr>
-<td>Sandbox</td>
-<td><a href="mailto:support@sfox.com">Contact support</a></td>
-</tr>
-</tbody></table>
+<p>Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.</p>
+
+<p>We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
+
+<p>This example API documentation page was created with <a href="https://github.com/lord/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&#39;s documentation.</p>
 <h1 id='authentication'>Authentication</h1>
 <blockquote>
 <p>To authorize, use this code:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span> <span class="se">\</span>
-  -u <span class="s2">"&lt;api token&gt;:"</span>
+<pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+
+<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+
+<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
+curl <span class="s2">"api_endpoint_here"</span>
+  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
+
+<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
 </code></pre>
 <blockquote>
-<p>Make sure to replace <api_key> with your API key, and don&#39;t forget the colon.</p>
+<p>Make sure to replace <code>meowmeowmeow</code> with your API key.</p>
 </blockquote>
 
-<p>SFOX uses API keys to grant access. You can create a new SFOX API key at our <a href="https://trade.sfox.com/account/api">developer portal</a>.</p>
+<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
 
-<p>The API key should be included in all API requests to the server in a header that looks like the following:</p>
+<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
 
-<p><code>Authorization: Bearer &lt;api_key&gt;</code></p>
+<p><code>Authorization: meowmeowmeow</code></p>
 
 <aside class="notice">
-You must replace `api_key` with your personal API key.
+You must replace <code>meowmeowmeow</code> with your personal API key.
 </aside>
-<h1 id='price-data'>Price Data</h1><h2 id='get-best-price'>Get Best Price</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.sfox.com/v1/offer/buy?amount=1"</span>
+<h1 id='kittens'>Kittens</h1><h2 id='get-all-kittens'>Get All Kittens</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+
+<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
+<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+
+<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
+<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span>
+  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
+
+<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
+<span class="kd">let</span> <span class="nx">kittens</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">();</span>
 </code></pre>
 <blockquote>
-<p>The result of the calls is something like this:</p>
+<p>The above command returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"quantity"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"vwap"</span><span class="p">:</span><span class="mf">383.00</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"price"</span><span class="p">:</span><span class="mf">383.21</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"fees"</span><span class="p">:</span><span class="mf">0.95</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"total"</span><span class="p">:</span><span class="mf">382.26</span><span class="w">
-</span><span class="p">}</span><span class="w">
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
 </span></code></pre>
-<p>This will return the price you need to specify for a limir order to execute fully. Please note that price fluctuates very quickly and this price is based on the data available at that moment.  If you want to trade now, we recommend using Buy Now and Sell Now calls and not limit orders.</p>
-
-<p>To get the sell price simply change &quot;buy&quot; to &quot;sell&quot; in the url.</p>
-
-<p>Use the &quot;price&quot; returned to you as the price in limit order you&#39;re placing.</p>
-
-<p>We also return VWAP - Volume weighted average price.  &quot;vwap&quot; is the expected price you will pay for the entire order.  Even though the price is 383.21 in this example, you will most likely pay $383 for the entire order.  These prices are not guaranteed as the market is always moving.  </p>
+<p>This endpoint retrieves all kittens.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>GET /v1/offer/buy?quantity</code></p>
+<p><code>GET http://example.com/api/kittens</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -397,988 +336,108 @@ You must replace `api_key` with your personal API key.
 </tr>
 </thead><tbody>
 <tr>
-<td>quantity</td>
-<td></td>
-<td>The amount of crypto assets you will be trading</td>
+<td>include_cats</td>
+<td>false</td>
+<td>If set to true, the result will also include cats.</td>
+</tr>
+<tr>
+<td>available</td>
+<td>true</td>
+<td>If set to false, the result will include kittens that have already been adopted.</td>
 </tr>
 </tbody></table>
-<h2 id='get-orderbook'>Get Orderbook</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.sfox.com/v1/markets/orderbook/&lt;asset_pair&gt;"</span>
+
+<aside class="success">
+Remember — a happy kitten is an authenticated kitten!
+</aside>
+<h2 id='get-a-specific-kitten'>Get a Specific Kitten</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+
+<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
+<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+
+<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
+<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
+  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
+
+<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
+<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
 </code></pre>
 <blockquote>
-<p>The result of the calls is an array of bids and asks:</p>
+<p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"asks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">[</span><span class="mf">8155.1</span><span class="p">,</span><span class="w"> </span><span class="mf">0.3881078</span><span class="p">,</span><span class="w"> </span><span class="s2">"gemini"</span><span class="p">],</span><span class="w">
-    </span><span class="p">[</span><span class="mf">8155.4</span><span class="p">,</span><span class="w"> </span><span class="mf">0.42019816</span><span class="p">,</span><span class="w"> </span><span class="s2">"gemini"</span><span class="p">],</span><span class="w">
-    </span><span class="p">[</span><span class="mf">8155.41</span><span class="p">,</span><span class="w"> </span><span class="mf">0.64771848</span><span class="p">,</span><span class="w"> </span><span class="s2">"gemini"</span><span class="p">],</span><span class="w">
-    </span><span class="p">[</span><span class="mf">8157.04</span><span class="p">,</span><span class="w"> </span><span class="mf">3.9171</span><span class="p">,</span><span class="w"> </span><span class="s2">"itbit"</span><span class="p">],</span><span class="w">
-    </span><span class="p">[</span><span class="mf">8157.97</span><span class="p">,</span><span class="w"> </span><span class="mf">1.3509</span><span class="p">,</span><span class="w"> </span><span class="s2">"itbit"</span><span class="p">],</span><span class="w">
-    </span><span class="p">[</span><span class="mf">8159.24</span><span class="p">,</span><span class="w"> </span><span class="mf">2.04259106</span><span class="p">,</span><span class="w"> </span><span class="s2">"bitstamp"</span><span class="p">]</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="s2">"bids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">[</span><span class="mf">8169.99</span><span class="p">,</span><span class="w"> </span><span class="mf">0.00196</span><span class="p">,</span><span class="w"> </span><span class="s2">"gemini"</span><span class="p">],</span><span class="w">
-    </span><span class="p">[</span><span class="mi">8169</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0921289</span><span class="p">,</span><span class="w"> </span><span class="s2">"bitfinex"</span><span class="p">],</span><span class="w">
-    </span><span class="p">[</span><span class="mf">8168.61</span><span class="p">,</span><span class="w"> </span><span class="mf">0.001</span><span class="p">,</span><span class="w"> </span><span class="s2">"bitstamp"</span><span class="p">],</span><span class="w">
-    </span><span class="p">[</span><span class="mf">8168.51</span><span class="p">,</span><span class="w"> </span><span class="mf">1.50982744</span><span class="p">,</span><span class="w"> </span><span class="s2">"itbit"</span><span class="p">],</span><span class="w">
-    </span><span class="p">[</span><span class="mf">8168.47</span><span class="p">,</span><span class="w"> </span><span class="mf">0.001</span><span class="p">,</span><span class="w"> </span><span class="s2">"bitfinex"</span><span class="p">],</span><span class="w">
-    </span><span class="p">[</span><span class="mf">8168.26</span><span class="p">,</span><span class="w"> </span><span class="mf">0.001</span><span class="p">,</span><span class="w"> </span><span class="s2">"bitfinex"</span><span class="p">]</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"usd"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"exchanges"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"bitfinex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"bitstamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"gemini"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"itbit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"lastupdated"</span><span class="p">:</span><span class="w"> </span><span class="mi">1532994078139</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"pair"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btcusd"</span><span class="p">}</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This will return the blended orderbook of all the available exchanges.</p>
+<p>This endpoint retrieves a specific kitten.</p>
+
+<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET /v1/markets/orderbook</code></p>
-<h3 id='query-parameters-2'>Query Parameters</h3>
+<p><code>GET http://example.com/kittens/&lt;ID&gt;</code></p>
+<h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
-<th>Default</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the kitten to retrieve</td>
+</tr>
 </tbody></table>
+<h2 id='delete-a-specific-kitten'>Delete a Specific Kitten</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
 
-<p>NONE</p>
-<h1 id='user'>User</h1><h2 id='get-account-balance'>Get Account Balance</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.sfox.com/v1/user/balance"</span> <span class="se">\</span>
-  -u <span class="s2">"&lt;api_key&gt;:"</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"currency"</span><span class="p">:</span><span class="s2">"btc"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"balance"</span><span class="p">:</span><span class="mf">0.627</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"available"</span><span class="p">:</span><span class="mi">0</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"currency"</span><span class="p">:</span><span class="s2">"usd"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"balance"</span><span class="p">:</span><span class="mf">0.25161318</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"available"</span><span class="p">:</span><span class="mf">0.23161321</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre>
-<p>Use this endpoint to access your account balance.  It returns an array of objects, each of which has details for a single asset.  </p>
+<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
+<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
 
-<p>You will get Balance and Available balance.  Balance is your total balance for this asset.  Available, on the other hand, is what is available to you to trade and/or withdraw.  The difference is amount that is reserved either in an open trade or pending a withdrawal request.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
-<p><code>GET /v1/balance</code></p>
-<h3 id='query-parameters-3'>Query Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-</tbody></table>
-
-<p>NONE</p>
-<h2 id='get-trade-history'>Get Trade History</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.sfox.com/v1/account/transactions?limit=250&amp;offset=0"</span> <span class="se">\</span>
-  -u <span class="s2">"&lt;api_key&gt;:"</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight plaintext"><code>[
-  {
-    'id': 12224191, 
-    'order_id': '67662454', 
-    'client_order_id': '', 
-    'day': '2018-07-29T21:30:10.000Z', 
-    'action': 'Buy', 
-    'currency': 'usd', 
-    'memo': '',
-    'amount': -438.34854806, 
-    'net_proceeds': -438.34854806, 
-    'price': 465.19547184, 
-    'fees': 1.53, 
-    'status': 'done', 
-    'hold_expires': '', 
-    'tx_hash': '', 
-    'algo_name': 'Smart', 
-    'algo_id': '200',
-    'account_balance': 3929.90349381, 
-    'AccountTransferFee': None
-  }
-]
-</code></pre>
-<p>Use this endpoint to access your trade history.  It returns an array of objects, each of which has details for each individual trade.  </p>
-<h3 id='http-request-4'>HTTP Request</h3>
-<p><code>GET /v1/account/transactions?limit=250&amp;offset=0</code></p>
-<h3 id='query-parameters-4'>Query Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-</tbody></table>
-
-<p>NONE</p>
-<h2 id='request-an-ach-deposit'>Request an ACH deposit</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.sfox.com/v1/user/withdraw"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: &lt;api_key&gt;"</span> <span class="se">\</span>
-  -d <span class="s2">"amount=1"</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>You can transfer funds from your bank account to SFOX using ACH.  You have to setup your bank account by going to <a href="https://api.sfox.com/#/account/deposit">Accounts / Deposits</a>.  Once you have setup your bank account, you can use this call to initiate the transfer request.</p>
-
-<aside class="notice">If the request fails, the json result will include an error field with the reason.</aside>
-<h3 id='http-request-5'>HTTP Request</h3>
-<p><code>POST /v1/user/deposit</code></p>
-<h3 id='form-parameters'>Form Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>amount</td>
-<td>The amount you wish to deposit from your bank account</td>
-</tr>
-</tbody></table>
-<h2 id='withdraw-funds'>Withdraw Funds</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.sfox.com/v1/user/withdraw"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: &lt;api_key&gt;"</span> <span class="se">\</span>
-  -d <span class="s2">"amount=1"</span> <span class="se">\</span>
-  -d <span class="s2">"address="</span> <span class="se">\</span>
-  -d <span class="s2">"currency=usd"</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>Submits a asset withdrawal request to SFOX.  Your funds must be available before requesting withdrawal.  For fiat currency withdrawal, your bank account must be setup prior to making the withdrawal request.  You can setup your bank account by going to <a href="https://api.sfox.com/#/account/deposit">Accounts / Deposits</a>.</p>
-
-<aside class="notice">If the request fails, the json result will include an error field with the reason.</aside>
-<h3 id='http-request-6'>HTTP Request</h3>
-<p><code>POST /v1/user/withdraw</code></p>
-<h3 id='form-parameters-2'>Form Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>amount</td>
-<td>The amount you wish to withdraw</td>
-</tr>
-<tr>
-<td>currency</td>
-<td>Currency is one of: usd, btc, eth</td>
-</tr>
-<tr>
-<td>address</td>
-<td>if the &quot;currency&quot; is a crypto asset, this field has to be a valid mainnet address. Otherwise leave it out or empty</td>
-</tr>
-</tbody></table>
-<h1 id='orders'>Orders</h1><h2 id='buy-market-order'>Buy (Market Order)</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.sfox.com/v1/orders/buy"</span> <span class="se">\</span>
-  -u <span class="s2">"&lt;api_key&gt;:"</span> <span class="se">\</span>
-  -d <span class="s2">"quantity=1"</span> <span class="se">\</span>
-  -d <span class="s2">"currency_pair=btcusd"</span>
-</code></pre>
-<blockquote>
-<p>The above command returns the same JSON object as the Order Status API, and it is structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">666</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"o_action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Buy"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"pair"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btcusd"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Limit"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"vwap"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"filled"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Started"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>This is a market order request to buy certain quantity of a crypto assets.  Since this is a &quot;Buy Now&quot; order, it will execute immediately.</p>
-<h3 id='http-request-7'>HTTP Request</h3>
-<p><code>POST /v1/orders/buy</code></p>
-<h3 id='query-parameters-5'>Query Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>quantity</td>
-<td>the amount of crypto assets you wish to buy</td>
-</tr>
-</tbody></table>
-<h2 id='buy-limit-order'>Buy (Limit Order)</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.sfox.com/v1/orders/buy"</span> <span class="se">\</span>
-  -u <span class="s2">"&lt;api_key&gt;:"</span> <span class="se">\</span>
-  -d <span class="s2">"quantity=1"</span> <span class="se">\</span>
-  -d <span class="s2">"price=10"</span> <span class="se">\</span>
-  -d <span class="s2">"currency_pair=btcusd"</span>
-</code></pre>
-<blockquote>
-<p>The above command returns the same JSON object as the Order Status API, and it is structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">666</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"o_action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Buy"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"pair"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btcusd"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Limit"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"vwap"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"filled"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Started"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>This endpoint initiates a buy order for crypto assets at the specified amount with the specified limit price.  If the price field is omitted, then the order will be treated as a market order and will execute immediately.  If there is an issue with the request you will get the reason in the &quot;error&quot; field.</p>
-<h3 id='http-request-8'>HTTP Request</h3>
-<p><code>POST /v1/orders/buy</code></p>
-<h3 id='query-parameters-6'>Query Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>quantity</td>
-<td>the amount of crypto assets you wish to buy</td>
-</tr>
-<tr>
-<td>price</td>
-<td>the max price you are willing to pay.  The executed price will always be less than or equal to this price if the market conditions allow it, otherwise the order will not execute.</td>
-</tr>
-<tr>
-<td>algorithm_id</td>
-<td>the <a href="#algorithm-ids">algorithm id</a> you wish to use to execute the order (default: 200)</td>
-</tr>
-<tr>
-<td>client_order_id</td>
-<td>this is an optional field that will hold a user specified id for reference</td>
-</tr>
-<tr>
-<td>currency_pair</td>
-<td>the asset pair you wish to trade (default: btcusd)</td>
-</tr>
-</tbody></table>
-<h2 id='sell-market-order'>Sell (Market Order)</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.sfox.com/v1/orders/sell"</span> <span class="se">\</span>
-  -u <span class="s2">"&lt;api_key&gt;:"</span> <span class="se">\</span>
-  -d <span class="s2">"quantity=1"</span> <span class="se">\</span>
-  -d <span class="s2">"currency_pair=btcusd"</span>
-</code></pre>
-<blockquote>
-<p>The above command returns the same JSON object as the Order Status API, and it is structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">667</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"o_action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sell"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"pair"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btcusd"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Limit"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"vwap"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"filled"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Started"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>This is a market order request to sell certain quantity of crypto assets.  Since this is a &quot;Sell Now&quot; order, it will execute immediately.</p>
-<h3 id='http-request-9'>HTTP Request</h3>
-<p><code>POST /v1/orders/sell</code></p>
-<h3 id='query-parameters-7'>Query Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>quantity</td>
-<td>the amount of crypto assets you wish to buy</td>
-</tr>
-</tbody></table>
-<h2 id='sell-limit-order'>Sell (Limit Order)</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.sfox.com/v1/orders/sell"</span> <span class="se">\</span>
-  -u <span class="s2">"&lt;api_key&gt;:"</span> <span class="se">\</span>
-  -d <span class="s2">"quantity=1"</span> <span class="se">\</span>
-  -d <span class="s2">"price=10"</span> <span class="se">\</span>
-  -d <span class="s2">"currency_pair=btcusd"</span>
-</code></pre>
-<blockquote>
-<p>The above command returns the same JSON object as the Order Status API, and it is structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">667</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"o_action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sell"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"pair"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btcusd"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Limit"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"vwap"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"filled"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Started"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>This endpoint initiates a sell order for the specified amount with the specified limit price.  If the price field is omitted, then the order will be treated as a market order and will execute immediately.  If there is an issue with the request you will get the reason in the &quot;error&quot; field.</p>
-<h3 id='http-request-10'>HTTP Request</h3>
-<p><code>POST /v1/orders/sell</code></p>
-<h3 id='query-parameters-8'>Query Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>quantity</td>
-<td>the amount of crypto assets you wish to buy</td>
-</tr>
-<tr>
-<td>price</td>
-<td>the min price you are willing to accept.  The executed price will always be higher than or equal to this price if the market conditions allow it, otherwise the order will not execute.</td>
-</tr>
-<tr>
-<td>algorithm_id</td>
-<td>the <a href="#algorithm-ids">algorithm id</a> you wish to use to execute the order (default: 200)</td>
-</tr>
-<tr>
-<td>client_order_id</td>
-<td>this is an optional field that will hold a user specified id for reference</td>
-</tr>
-<tr>
-<td>currency_pair</td>
-<td>the asset pair you wish to trade (default: btcusd)</td>
-</tr>
-</tbody></table>
-<h2 id='get-order-status'>Get Order Status</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.sfox.com/v1/order/&lt;order_id&gt;"</span> <span class="se">\</span>
-  -u <span class="s2">"&lt;api_key&gt;:"</span>
-</code></pre>
-<blockquote>
-<p>The above command returns a JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">666</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"o_action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Buy"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"pair"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btcusd"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Limit"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"vwap"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"filled"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Started"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>This endpoint returns the status of the order specified by the <order_id> url parameter</p>
-<h3 id='http-request-11'>HTTP Request</h3>
-<p><code>GET /v1/order/&lt;order_id&gt;</code></p>
-<h3 id='possible-quot-status-quot-values'>Possible &quot;status&quot; values</h3>
-<table><thead>
-<tr>
-<th>Value</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Started</td>
-<td>The order is open on the marketplace waiting for fills</td>
-</tr>
-<tr>
-<td>Cancel pending</td>
-<td>The order is in the process of being cancelled</td>
-</tr>
-<tr>
-<td>Canceled</td>
-<td>The order was successfully canceled</td>
-</tr>
-<tr>
-<td>Filled</td>
-<td>The order was filled</td>
-</tr>
-<tr>
-<td>Done</td>
-<td>The order was completed successfully</td>
-</tr>
-</tbody></table>
-<h2 id='get-active-orders'>Get Active Orders</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.sfox.com/v1/orders"</span> <span class="se">\</span>
-  -u <span class="s2">"&lt;api_key&gt;:"</span>
-</code></pre>
-<blockquote>
-<p>The above command returns an array of Order Status JSON objects structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">666</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"o_action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Buy"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"pair"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btcusd"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Limit"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"vwap"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"filled"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Started"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">667</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"o_action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sell"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"pair"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btcusd"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Limit"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"vwap"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"filled"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Started"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre>
-<p>This endpoint returns an array of statuses for all active orders.</p>
-<h3 id='http-request-12'>HTTP Request</h3>
-<p><code>GET /v1/orders</code></p>
-<h3 id='possible-quot-status-quot-values-2'>Possible &quot;status&quot; values</h3>
-<table><thead>
-<tr>
-<th>Value</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Started</td>
-<td>The order is open on the marketplace waiting for fills</td>
-</tr>
-<tr>
-<td>Cancel pending</td>
-<td>The order is in the process of being cancelled</td>
-</tr>
-<tr>
-<td>Canceled</td>
-<td>The order was successfully canceled</td>
-</tr>
-<tr>
-<td>Filled</td>
-<td>The order was filled</td>
-</tr>
-<tr>
-<td>Done</td>
-<td>The order was completed successfully</td>
-</tr>
-</tbody></table>
-<h2 id='cancel-order'>Cancel Order</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.sfox.com/v1/order/&lt;order_id&gt;"</span> <span class="se">\</span>
-  -u <span class="s2">"&lt;api_key&gt;:"</span> <span class="se">\</span>
+<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
+<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
   -X DELETE
-</code></pre>
-<blockquote>
-<p>The above command does not return anything.  To check on the cancellation status of the order you will need to poll the get order status api.</p>
-</blockquote>
+  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
 
-<p>This endpoint will start cancelling the order specified.</p>
-<h3 id='http-request-13'>HTTP Request</h3>
-<p><code>DELETE /v1/order/&lt;order_id&gt;</code></p>
-<h2 id='asset-pairs'>Asset Pairs</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.sfox.com/v1/markets/currency-pairs"</span> <span class="se">\</span>
-  -u <span class="s2">"&lt;api_key&gt;:"</span> <span class="se">\</span>
-  -X GET
+<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
+<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
 </code></pre>
 <blockquote>
-<p>Response</p>
+<p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"bchbtc"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"formatted_symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BCH/BTC"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bchbtc"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"bchusd"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"formatted_symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BCH/USD"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bchusd"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"btcusd"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"formatted_symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC/USD"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btcusd"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"xrpusd"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"formatted_symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP/USD"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xrpusd"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"deleted"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">":("</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>SFOX allows for you to get a list of the asset pairs that are currently active for your account. Please note that the &quot;symbol&quot; key in each of the asset pair objects is the one that can be used to place buy/sell orders or request marketdata.</p>
-<h3 id='http-request-14'>HTTP Request</h3>
-<p><code>GET /v1/markets/currency-pairs</code></p>
-<h2 id='algorithm-ids'>Algorithm IDs</h2>
+<p>This endpoint deletes a specific kitten.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>DELETE http://example.com/kittens/&lt;ID&gt;</code></p>
+<h3 id='url-parameters-2'>URL Parameters</h3>
 <table><thead>
 <tr>
-<th>ID</th>
+<th>Parameter</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>200</td>
-<td>Smart Routing</td>
-</tr>
-<tr>
-<td>301</td>
-<td>Goliath</td>
-</tr>
-<tr>
-<td>302</td>
-<td>Tortoise</td>
-</tr>
-<tr>
-<td>303</td>
-<td>Hare</td>
-</tr>
-<tr>
-<td>304</td>
-<td>Stop-Loss</td>
-</tr>
-<tr>
-<td>305</td>
-<td>Polar Bear</td>
-</tr>
-<tr>
-<td>306</td>
-<td>Sniper</td>
-</tr>
-<tr>
-<td>307</td>
-<td>TWAP</td>
+<td>ID</td>
+<td>The ID of the kitten to delete</td>
 </tr>
 </tbody></table>
-<h1 id='websocket'>Websocket</h1><h2 id='connecting'>Connecting</h2><pre class="highlight javascript tab-javascript"><code>
-  <span class="kr">const</span> <span class="nx">WebSocket</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'ws'</span><span class="p">);</span>
-
-  <span class="kr">const</span> <span class="nx">ws</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WebSocket</span><span class="p">(</span><span class="s1">'wss://ws.sfox.com/ws'</span><span class="p">);</span>
-  <span class="nx">ws</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'message'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// Do something with data</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
-  <span class="p">});</span>
-</code></pre>
-<p>Connecting to the SFOX websocket allows for you to receive realtime marketdata from the exchanges that SFOX is connected to.</p>
-
-<table><thead>
-<tr>
-<th>Endpoint</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Production</td>
-<td>wss://ws.sfox.com/ws</td>
-</tr>
-<tr>
-<td>Sandbox</td>
-<td><a href="mailto:support@sfox.com">Contact support</a></td>
-</tr>
-</tbody></table>
-<h2 id='managing-subscriptions'>Managing Subscriptions</h2>
-<blockquote>
-<p>Subscribing</p>
-</blockquote>
-<pre class="highlight javascript tab-javascript"><code>  <span class="kd">var</span> <span class="nx">subscribeMsg</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"subscribe"</span><span class="p">,</span>
-    <span class="s2">"feeds"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"ticker.sfox.btcusd"</span><span class="p">]</span>
-  <span class="p">}</span>
-  <span class="nx">ws</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">subscribeMsg</span><span class="p">));</span>
-</code></pre>
-<blockquote>
-<p>Response:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"sequence"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="mi">1534443719605160397</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"recipient"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ticker.sfox.btcusd"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1534443725944639261</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"payload"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0989</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"coinbase"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"high"</span><span class="p">:</span><span class="w"> </span><span class="mf">6491.8</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"last"</span><span class="p">:</span><span class="w"> </span><span class="mf">6399.99</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"low"</span><span class="p">:</span><span class="w"> </span><span class="mi">6200</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"open"</span><span class="p">:</span><span class="w"> </span><span class="mf">6269.01</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"pair"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btcusd"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"route"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smart"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ticker-info"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-16T18:22:05.909Z"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mf">38541.16966647</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"vwap"</span><span class="p">:</span><span class="w"> </span><span class="mf">6358.123642949931</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<blockquote>
-<p>Unsubscribing</p>
-</blockquote>
-<pre class="highlight javascript tab-javascript"><code>  <span class="kd">var</span> <span class="nx">unsubscribe</span> <span class="o">=</span> <span class="p">{</span>
-          <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"unsubscribe"</span><span class="p">,</span>
-          <span class="s2">"feeds"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"ticker.sfox.btcusd"</span><span class="p">]</span>
-      <span class="p">}</span>
-  <span class="nx">ws</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">unsubscribe</span><span class="p">));</span>
-</code></pre>
-<blockquote>
-<p>Response:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"sequence"</span><span class="p">:</span><span class="mi">30</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="mi">1534440639383033506</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>Once connected to the SFOX websocket you can subscribe to various public feeds without authenticating by using the <code>subscribe</code> or <code>unsubscribe</code> command. These commands should be JSON with the following properties.</p>
-
-<table><thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>type</td>
-<td>string</td>
-<td>Command you are sending to the websocket (<code>subscribe</code> or <code>unsubscribe</code>)</td>
-</tr>
-<tr>
-<td>feeds</td>
-<td>[]string</td>
-<td>List of the feeds that should be subscribed/unsubscribed to</td>
-</tr>
-</tbody></table>
-<h3 id='supported-feeds'>Supported Feeds</h3>
-<table><thead>
-<tr>
-<th>Type</th>
-<th>Feed</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Ticker</td>
-<td>ticker.sfox.btcusd</td>
-</tr>
-<tr>
-<td>Ticker</td>
-<td>ticker.sfox.ethusd</td>
-</tr>
-<tr>
-<td>Ticker</td>
-<td>ticker.sfox.bchusd</td>
-</tr>
-<tr>
-<td>Ticker</td>
-<td>ticker.sfox.ethbtc</td>
-</tr>
-<tr>
-<td>Ticker</td>
-<td>ticker.sfox.bchbtc</td>
-</tr>
-<tr>
-<td>Orderbook</td>
-<td>orderbook.sfox.btcusd</td>
-</tr>
-<tr>
-<td>Orderbook</td>
-<td>orderbook.sfox.ethusd</td>
-</tr>
-<tr>
-<td>Orderbook</td>
-<td>orderbook.sfox.bchusd</td>
-</tr>
-<tr>
-<td>Orderbook</td>
-<td>orderbook.sfox.ethbtc</td>
-</tr>
-<tr>
-<td>Orderbook</td>
-<td>orderbook.sfox.bchbtc</td>
-</tr>
-<tr>
-<td>Trades</td>
-<td>trades.sfox.btcusd</td>
-</tr>
-<tr>
-<td>Trades</td>
-<td>trades.sfox.ethusd</td>
-</tr>
-<tr>
-<td>Trades</td>
-<td>trades.sfox.bchusd</td>
-</tr>
-<tr>
-<td>Trades</td>
-<td>trades.sfox.ethbtc</td>
-</tr>
-<tr>
-<td>Trades</td>
-<td>trades.sfox.bchbtc</td>
-</tr>
-</tbody></table>
-<h2 id='message-format'>Message Format</h2>
-<p>Messages that are sent to the various feeds will be JSON objects with the following similar format.</p>
-
-<table><thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>sequence</td>
-<td>int</td>
-<td>The sequence number that the message was sent in.</td>
-</tr>
-<tr>
-<td>recipient</td>
-<td>string</td>
-<td>The feed that the message was sent to</td>
-</tr>
-<tr>
-<td>timestamp</td>
-<td>int</td>
-<td>The timestamp (in microseconds)</td>
-</tr>
-<tr>
-<td>payload</td>
-<td>json</td>
-<td>The payload parameter will be a JSON message that contains then data</td>
-</tr>
-</tbody></table>
-
+<h1 id='errors'>Errors</h1>
 <aside class="notice">
-Please note that the `sequence` number sent by the websocket is not guaranteed to be in ascending order. If you detect any gaps or incorrect ordering you should reconnect. 
+This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
 </aside>
-<h3 id='ticker-message'>Ticker Message</h3>
-<blockquote>
-<p>Ticker example message</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"recipient"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ticker.sfox.btcusd"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1534440861543042409</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"payload"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0092443</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bitstamp"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"high"</span><span class="p">:</span><span class="w"> </span><span class="mf">6491.8</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"last"</span><span class="p">:</span><span class="w"> </span><span class="mf">6442.5</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"low"</span><span class="p">:</span><span class="w"> </span><span class="mi">6200</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"open"</span><span class="p">:</span><span class="w"> </span><span class="mf">6269.01</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"pair"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btcusd"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"route"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smart"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ticker-info"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-16T17:34:21.000Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mf">36810.02514349</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"vwap"</span><span class="p">:</span><span class="w"> </span><span class="mf">6355.319029430</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>Subscriptions to the ticker feed will receive realtime trades that occur on any of the exchanges that are active on the SFOX platform.</p>
-<h3 id='orderbook-message'>Orderbook Message</h3>
-<blockquote>
-<p>Orderbook example</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"recipient"</span><span class="p">:</span><span class="w"> </span><span class="s2">"orderbook.sfox.ethbtc"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1534440609281315077</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"payload"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"bids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">[</span><span class="w">
-                </span><span class="mf">0.0454916</span><span class="p">,</span><span class="w">
-                </span><span class="mf">1.519</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"market2"</span><span class="w">
-            </span><span class="p">],</span><span class="w">
-            </span><span class="p">[</span><span class="w">
-                </span><span class="mf">0.04549109</span><span class="p">,</span><span class="w">
-                </span><span class="mf">1.182</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"market2"</span><span class="w">
-            </span><span class="p">],</span><span class="w">
-            </span><span class="p">[</span><span class="w">
-                </span><span class="mf">0.04549086</span><span class="p">,</span><span class="w">
-                </span><span class="mf">0.21094215</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"market2"</span><span class="w">
-            </span><span class="p">],</span><span class="w">
-        </span><span class="p">],</span><span class="w">
-        </span><span class="s2">"asks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">[</span><span class="w">
-                </span><span class="mf">0.04564</span><span class="p">,</span><span class="w">
-                </span><span class="mf">34.1074</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"gemini"</span><span class="w">
-            </span><span class="p">],</span><span class="w">
-            </span><span class="p">[</span><span class="w">
-                </span><span class="mf">0.04559969</span><span class="p">,</span><span class="w">
-                </span><span class="mf">4.8245942</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"bitstamp"</span><span class="w">
-            </span><span class="p">],</span><span class="w">
-            </span><span class="p">[</span><span class="w">
-                </span><span class="mf">0.04556277</span><span class="p">,</span><span class="w">
-                </span><span class="mf">0.507</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"market2"</span><span class="w">
-            </span><span class="p">]</span><span class="w">
-        </span><span class="p">],</span><span class="w">
-        </span><span class="s2">"exchanges"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"gemini"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"bitfinex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"bitstamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"kraken"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DEGRADED"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"market1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"market2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"lastupdated"</span><span class="p">:</span><span class="w"> </span><span class="mi">1534440609168</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"pair"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ethbtc"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btc"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>Subscriptions to one or many of the orderbook feeds will receive snapshots of the full SFOX orderbook for that pair. </p>
 
-<aside class="notice">
-Please note that subscriptions to the orderbook will receive full orderbook snapshots for the pair subscribed to, SFOX does not support sending changes at this time.
-</aside>
-<h1 id='fix-api'>FIX Api</h1>
-<p>For information on how to impliment the FIX protocol please contact <a href="mailto:support@sfox.com">support@sfox.com</a></p>
-<h1 id='python-example'>Python example</h1><h2 id='public-api'>Public API</h2><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">json</span>
-<span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">import</span> <span class="nn">requests</span>
-
-<span class="k">class</span> <span class="nc">Sfox</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="s">"api.sfox.com"</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="s">"v1"</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">endpoint</span> <span class="o">=</span> <span class="n">endpoint</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">apiVersion</span> <span class="o">=</span> <span class="n">version</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
-
-    <span class="k">def</span> <span class="nf">url_for</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resource</span><span class="p">):</span>
-        <span class="k">return</span> <span class="s">"https://"</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">endpoint</span> <span class="o">+</span> <span class="s">"/"</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">apiVersion</span> <span class="o">+</span> <span class="s">"/"</span> <span class="o">+</span> <span class="n">resource</span>
-
-    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resource</span><span class="p">,</span> <span class="n">apiKey</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-        <span class="n">resource</span> <span class="o">=</span> <span class="n">resource</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
-        <span class="n">auth</span> <span class="o">=</span> <span class="bp">None</span>
-        <span class="k">if</span> <span class="n">apiKey</span><span class="p">:</span>
-            <span class="n">auth</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">auth</span><span class="o">.</span><span class="n">HTTPBasicAuth</span><span class="p">(</span><span class="n">apiKey</span><span class="p">,</span> <span class="s">""</span><span class="p">)</span>
-        <span class="n">url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">url_for</span><span class="p">(</span><span class="n">resource</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">auth</span><span class="o">=</span><span class="n">auth</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">orderbook</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">market</span><span class="p">):</span>
-        <span class="n">market</span> <span class="o">=</span> <span class="n">market</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
-        <span class="n">resource</span> <span class="o">=</span> <span class="s">"markets/orderbook/"</span><span class="o">+</span><span class="n">market</span>
-        <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get</span><span class="p">(</span><span class="n">resource</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">bestBuyPrice</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">quantity</span><span class="p">):</span>
-        <span class="n">resource</span> <span class="o">=</span> <span class="s">"offer/buy?amount="</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">quantity</span><span class="p">)</span>
-        <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get</span><span class="p">(</span><span class="n">resource</span><span class="p">)</span>
-        <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">data</span><span class="p">[</span><span class="s">"price"</span><span class="p">]</span>
-
-    <span class="k">def</span> <span class="nf">bestSellPrice</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">quantity</span><span class="p">):</span>
-        <span class="n">resource</span> <span class="o">=</span> <span class="s">"offer/sell?amount="</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">quantity</span><span class="p">)</span>
-        <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get</span><span class="p">(</span><span class="n">resource</span><span class="p">)</span>
-        <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">data</span><span class="p">[</span><span class="s">"price"</span><span class="p">]</span>
-</code></pre><h2 id='private-api'>Private API</h2><pre class="highlight python tab-python"><code><span class="k">class</span> <span class="nc">PrivateSfox</span><span class="p">(</span><span class="n">Sfox</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">api_key</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="s">"api.sfox.com"</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="s">"v1"</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">endpoint</span> <span class="o">=</span> <span class="n">endpoint</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">apiVersion</span> <span class="o">=</span> <span class="n">version</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">api_key</span> <span class="o">=</span> <span class="n">api_key</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">endpoint</span><span class="p">,</span> <span class="n">version</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resource</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
-        <span class="n">resource</span> <span class="o">=</span> <span class="n">resource</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
-        <span class="n">url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">url_for</span><span class="p">(</span><span class="n">resource</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
-            <span class="n">url</span><span class="p">,</span>
-            <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">,</span> 
-            <span class="n">auth</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">auth</span><span class="o">.</span><span class="n">HTTPBasicAuth</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">api_key</span><span class="p">,</span><span class="s">""</span><span class="p">)</span>
-        <span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resource</span><span class="p">):</span>
-        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">api_key</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resource</span><span class="p">):</span>
-        <span class="n">url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">url_for</span><span class="p">(</span><span class="n">resource</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">requests</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span>
-            <span class="n">url</span><span class="p">,</span> 
-            <span class="n">auth</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">auth</span><span class="o">.</span><span class="n">HTTPBasicAuth</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">api_key</span><span class="p">,</span><span class="s">""</span><span class="p">)</span>
-        <span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">market_buy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">quantity</span><span class="p">,</span> <span class="n">pair</span><span class="p">):</span>
-        <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s">"quantity"</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">quantity</span><span class="p">),</span><span class="s">"currency_pair"</span><span class="p">:</span><span class="nb">str</span><span class="p">(</span><span class="n">pair</span><span class="p">)}</span>
-        <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s">"orders/buy"</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">market_sell</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">quantity</span><span class="p">,</span> <span class="n">pair</span><span class="p">):</span>
-        <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s">"quantity"</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">quantity</span><span class="p">),</span><span class="s">"currency_pair"</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">pair</span><span class="p">)}</span>
-        <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s">"orders/sell"</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">limit_buy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">price</span><span class="p">,</span> <span class="n">quantity</span><span class="p">,</span> <span class="n">pair</span><span class="p">):</span>
-        <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s">"quantity"</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">quantity</span><span class="p">),</span> <span class="s">"price"</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">price</span><span class="p">),</span> <span class="s">"currency_pair"</span><span class="p">:</span><span class="nb">str</span><span class="p">(</span><span class="n">pair</span><span class="p">)}</span>
-        <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s">"orders/buy"</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">limit_sell</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">price</span><span class="p">,</span> <span class="n">quantity</span><span class="p">,</span> <span class="n">pair</span><span class="p">):</span>
-        <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s">"quantity"</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">quantity</span><span class="p">),</span> <span class="s">"price"</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">price</span><span class="p">),</span> <span class="s">"currency_pair"</span><span class="p">:</span><span class="nb">str</span><span class="p">(</span><span class="n">pair</span><span class="p">)}</span>
-        <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s">"orders/sell"</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>         
-
-    <span class="k">def</span> <span class="nf">balance</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">"user/balance"</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">get_order_status</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">order_id</span><span class="p">):</span>
-        <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">"order/"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">order_id</span><span class="p">))</span>
-        <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">get_trade_history</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">limit</span><span class="p">,</span> <span class="n">offset</span><span class="p">):</span>
-        <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">"account/transactions?limit="</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">limit</span><span class="p">)</span> <span class="o">+</span> <span class="s">"&amp;offset="</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">offset</span><span class="p">))</span>
-        <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">get_active_orders</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">"orders"</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">cancel_order</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">order_id</span><span class="p">):</span>
-        <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s">"order/"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">order_id</span><span class="p">))</span>
-        <span class="n">order</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_order_status</span><span class="p">(</span><span class="n">order_id</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">order</span><span class="p">[</span><span class="s">"status"</span><span class="p">]</span> <span class="o">==</span> <span class="s">"Canceled"</span><span class="p">:</span>
-            <span class="k">return</span> <span class="bp">True</span>
-        <span class="k">return</span> <span class="bp">False</span>
-
-    <span class="k">def</span> <span class="nf">cancel_last_order</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">orders</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_active_orders</span><span class="p">()</span>
-        <span class="n">last_order</span> <span class="o">=</span> <span class="n">orders</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s">"id"</span><span class="p">]</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">cancel_order</span><span class="p">(</span><span class="n">last_order</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">cancel_all_orders</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">orders</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_active_orders</span><span class="p">()</span>
-        <span class="n">targetList</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">canceled</span> <span class="o">=</span> <span class="p">[]</span>
-
-        <span class="k">for</span> <span class="n">order</span> <span class="ow">in</span> <span class="n">orders</span><span class="p">:</span>
-            <span class="n">targetList</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">order</span><span class="p">[</span><span class="s">"id"</span><span class="p">])</span>
-
-        <span class="k">for</span> <span class="n">myId</span> <span class="ow">in</span> <span class="n">targetList</span><span class="p">:</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">cancel_order</span><span class="p">(</span><span class="n">myId</span><span class="p">):</span>
-                <span class="n">canceled</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">myId</span><span class="p">)</span>  
-        <span class="k">return</span> <span class="n">canceled</span>
-</code></pre><h1 id='errors'>Errors</h1>
-<aside class="notice">The SFOX API communicates error codes through HTTP status codes.  The following are the error codes currently in use.</aside>
-
-<p>The SFOX API uses the following error codes:</p>
+<p>The Kittn API uses the following error codes:</p>
 
 <table><thead>
 <tr>
@@ -1388,31 +447,39 @@ Please note that subscriptions to the orderbook will receive full orderbook snap
 </thead><tbody>
 <tr>
 <td>400</td>
-<td>Bad Request -- Your request was malformed in some way</td>
+<td>Bad Request -- Your request is invalid.</td>
 </tr>
 <tr>
 <td>401</td>
-<td>Unauthorized -- Your API key is wrong</td>
+<td>Unauthorized -- Your API key is wrong.</td>
 </tr>
 <tr>
 <td>403</td>
-<td>Forbidden -- The API key is not authorized for this endpoint</td>
+<td>Forbidden -- The kitten requested is hidden for administrators only.</td>
 </tr>
 <tr>
 <td>404</td>
-<td>Not Found -- The specified endpoint could not be found</td>
+<td>Not Found -- The specified kitten could not be found.</td>
 </tr>
 <tr>
 <td>405</td>
-<td>Method Not Allowed -- You tried to access a endpoint with an invalid method</td>
+<td>Method Not Allowed -- You tried to access a kitten with an invalid method.</td>
 </tr>
 <tr>
 <td>406</td>
-<td>Not Acceptable -- You requested a format that isn&#39;t json</td>
+<td>Not Acceptable -- You requested a format that isn&#39;t json.</td>
+</tr>
+<tr>
+<td>410</td>
+<td>Gone -- The kitten requested has been removed from our servers.</td>
+</tr>
+<tr>
+<td>418</td>
+<td>I&#39;m a teapot.</td>
 </tr>
 <tr>
 <td>429</td>
-<td>Too Many Requests -- You have exceeded your request limit</td>
+<td>Too Many Requests -- You&#39;re requesting too many kittens! Slow down!</td>
 </tr>
 <tr>
 <td>500</td>
@@ -1420,7 +487,7 @@ Please note that subscriptions to the orderbook will receive full orderbook snap
 </tr>
 <tr>
 <td>503</td>
-<td>Service Unavailable -- We&#39;re temporarially offline for maintanance. Please try again later.</td>
+<td>Service Unavailable -- We&#39;re temporarily offline for maintenance. Please try again later.</td>
 </tr>
 </tbody></table>
 
@@ -1428,6 +495,9 @@ Please note that subscriptions to the orderbook will receive full orderbook snap
       <div class="dark-box">
           <div class="lang-selector">
                 <a href="#" data-language-name="shell">shell</a>
+                <a href="#" data-language-name="ruby">ruby</a>
+                <a href="#" data-language-name="python">python</a>
+                <a href="#" data-language-name="javascript">javascript</a>
           </div>
       </div>
     </div>
