@@ -18,7 +18,6 @@ includes:
   - algo_ids
   - orders
   - websockets
-  - fix
   - errors
 
 search: true
