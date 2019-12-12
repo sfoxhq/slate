@@ -18,6 +18,7 @@ includes:
   - algo_ids
   - orders
   - websockets
+  - client_libraries
   - errors
 
 search: true
