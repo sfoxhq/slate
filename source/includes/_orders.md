@@ -89,16 +89,16 @@ requests.post(
 
 Parameter | Required | Default | Description
 --------- | :--------: | ------- | -----------
-quantity | Y | | Quantity to trade
+quantity | Y | | Quantity to trade | The quantity to trade. The minimum order size is 0.001 (or $5)
 currency\_pair | N | btcusd | Currency pair
-price | N | | The maximum price you are willing to accept. Note that the executed price will always be lower than or equal to this price if the market conditions allow it, otherwise, the order will not execute
+price | N | | The maximum price you are willing to accept. Note that the executed price will always be lower than or equal to this price if the market conditions allow it, otherwise, the order will not execute (Precision: 8 decimal places for crypto, 2 decimal places for fiat)
 algorithm\_id | N | 200 | The [algorithm id](#algorithm-ids) you wish to use to execute the order
 client\_order\_id | N | | An optional field that can hold a user specified ID
 interval | N | 15 minutes | **For TWAP orders only** The interval specifies the frequency at which orders are executed
 total\_time | N | | **For TWAP orders only** The maximum time a TWAP order will stay active (must be greater than or equal to 15 minutes)
 
 <aside class="warning">
-    If no price is specified, this will default to a Smart Order (`algorithm_id`: 200).
+    If no price is specified, SFOX defaults to an Instant Trade (algorithm_id: 150).
 </aside>
 
 <aside class="notice">
