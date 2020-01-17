@@ -1,14 +1,16 @@
-# Algorithm IDs
+# Algorithms & Routing Types
 
-SFOX allows you to choose from our suite of execution algorithms to place different types of trades. For details on the algorithms and when to use them see [SFOX Algorithms](https://www.sfox.com/algos.html)
+SFOX offers a wide range of trading algorithms, as well as two routing types to optimize your order's execution. For more details, see [SFOX Algorithms](https://www.sfox.com/algos.html).
 
-ID | Description
---------- | -----------
-200 | Smart Routing
-301 | Gorilla
-302 | Tortoise
-303 | Hare
-304 | Stop-Loss
-305 | Polar Bear
-306 | Sniper
-307 | TWAP
+ID | Description | Routing Types
+--------- | ----------- | ---------
+100 | Market | [Smart, NetPrice]
+200 | Smart Routing | [Smart, NetPrice]
+201 | Limit | [Smart, NetPrice]
+301 | Gorilla | [Smart]
+302 | Tortoise | [Smart]
+303 | Hare | [Smart]
+304 | Stop-Loss | [Smart, NetPrice]
+305 | Polar Bear | [Smart, NetPrice]
+306 | Sniper | [Smart, NetPrice]
+307 | TWAP | [Smart, NetPrice]

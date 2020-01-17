@@ -132,23 +132,17 @@ payload | json | The payload parameter will be a JSON message that contains then
 
 ## Supported Channels
 
-Type | Feed | Description
---------- | --------- | -----------
-Ticker | ticker.sfox.btcusd | [ticker](#ticker)
-Ticker | ticker.sfox.ethusd | [ticker](#ticker)
-Ticker | ticker.sfox.bchusd | [ticker](#ticker)
-Ticker | ticker.sfox.ethbtc | [ticker](#ticker)
-Ticker | ticker.sfox.bchbtc | [ticker](#ticker)
-Orderbook | orderbook.sfox.btcusd | [orderbook](#orderbook)
-Orderbook | orderbook.sfox.ethusd | [orderbook](#orderbook)
-Orderbook | orderbook.sfox.bchusd | [orderbook](#orderbook)
-Orderbook | orderbook.sfox.ethbtc | [orderbook](#orderbook)
-Orderbook | orderbook.sfox.bchbtc | [orderbook](#orderbook)
-Trades | trades.sfox.btcusd | [trades](#trades)
-Trades | trades.sfox.ethusd | [trades](#trades)
-Trades | trades.sfox.bchusd | [trades](#trades)
-Trades | trades.sfox.ethbtc | [trades](#trades)
-Trades | trades.sfox.bchbtc | [trades](#trades)
+Orderbook channels are of the form `orderbook.type.pair`. Channels with type `sfox` will stream the normal, consolidated SFOX orderbook, while type `net` channels will stream the fee-adjusted orderbook used for the `NetPrice` routing type.
+
+E.g. `orderbook.sfox.btcusd` or `orderbook.net.ethbtc`
+
+Trade channels are of the form `trades.sfox.pair`.
+
+E.g. `trades.sfox.btcusd`
+
+Ticker channels are of the form `ticker.sfox.pair`.
+
+E.g. `ticker.sfox.ltcbtc`
 
 ## Channel Descriptions
 
