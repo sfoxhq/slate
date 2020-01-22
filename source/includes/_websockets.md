@@ -132,13 +132,19 @@ payload | json | The payload parameter will be a JSON message that contains then
 
 ## Supported Channels
 
+### Orderbooks
+
 Orderbook channels are of the form `orderbook.type.pair`. Channels with type `sfox` will stream the normal, consolidated SFOX orderbook, while type `net` channels will stream the fee-adjusted orderbook used for the `NetPrice` routing type.
 
 E.g. `orderbook.sfox.btcusd` or `orderbook.net.ethbtc`
 
+### Trades
+
 Trade channels are of the form `trades.sfox.pair`.
 
 E.g. `trades.sfox.btcusd`
+
+### Ticker
 
 Ticker channels are of the form `ticker.sfox.pair`.
 

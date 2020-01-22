@@ -1,9 +1,7 @@
 # Errors
 
-<aside class="notice">The SFOX API communicates error codes through HTTP status codes.  The following are the error codes currently in use.</aside>
-
-The SFOX API uses the following error codes:
-
+## HTTP Status Codes
+The SFOX API communicates error codes through HTTP status codes.  The following are the error codes currently in use:
 
 Error Code | Meaning
 ---------- | -------

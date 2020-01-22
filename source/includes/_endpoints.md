@@ -1,4 +1,4 @@
-# Endpoints
+# REST Endpoints
 
 Endpoint | Description
 --------- | -----------

@@ -1,4 +1,4 @@
-# User & Account Management
+# Account Management
 
 ## Get Account Balance
 
