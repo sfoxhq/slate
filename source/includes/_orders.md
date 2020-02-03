@@ -49,7 +49,7 @@ Parameter | Default | Description
 --------- | ------- | -----------
 quantity |  | The quantity to trade. The minimum quantity is 0.001 for crypto-denominated pairs, and price*quantity must be greater than $5 for USD-denominated pairs.
 currency\_pair | btcusd | The pair or product to trade.
-price | | The limit price (Precision: 8 decimal places for crypto, 2 decimal places for fiat). **Note: the executed price will always be lower than or equal to this price if the market conditions allow it; otherwise, the order will not execute.** 
+price | | The limit price (Precision: 8 decimal places for crypto, 2 decimal places for fiat). **Note: the executed price will always be better than or equal to this price; if the market conditions do not allow it, the order will not execute.** 
 algorithm\_id | 200 | Specifies the [algorithm](#algorithm-ids) you wish to use to execute the order.
 routing\_type | Smart | How SFOX will route your order. For more info, see [Routing Types](#routing-types).
 client\_order\_id | | An optional field that can hold a user-specified ID.
@@ -63,8 +63,11 @@ amount | Market | | The amount (quote currency) to spend when buying. **Note: re
 interval | TWAP | 900 | The frequency at which TWAP trades are executed (in seconds).
 total\_time | TWAP | | The maximum time a TWAP order will stay active (in seconds). Must be >= 15 minutes and the interval.
 
+<aside class="warning">
+    If no price is specified for an order (other than Market, Instant, and Simple types), the order will be rejected.
+</aside>
 <aside class="notice">
-    If a price is specified, SFOX will execute the maximum quantity available at or lower than the specified price.
+    Orders placed without an Algorithm ID will default to Limit.
 </aside>
 
 ## Cancel an Order
