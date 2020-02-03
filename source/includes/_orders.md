@@ -1,49 +1,6 @@
 # Orders
 
-## Asset Pairs
-
-Get a list of the asset pairs that are currently active for your account.
-
-<aside class="notice">
-    The "symbol" key in each asset pair is the one that can be used to place orders and request market data.
-</aside>
-
-```shell
-curl "https://api.sfox.com/v1/markets/currency-pairs" \
-  -u "<api_key>:"
-```
-
-```python
-requests.get(
-    "https://api.sfox.com/v1/markets/currency-pairs",
-    auth=requests.auth.HTTPBasicAuth("<api_key>", "")
-).json()
-```
-
-> Response
-
-```json
-{
-    "bchbtc": {
-        "formatted_symbol": "BCH/BTC",
-        "symbol": "bchbtc"
-    },
-    "bchusd": {
-        "formatted_symbol": "BCH/USD",
-        "symbol": "bchusd"
-    },
-    "btcusd": {
-        "formatted_symbol": "BTC/USD",
-        "symbol": "btcusd"
-    }
-}
-```
-
-### HTTP Request
-
-`GET /v1/markets/currency-pairs`
-
-## Place a Buy Order
+## Place an Order
 
 You can place eight types of orders, specified by an [Algorithm ID](#algorithm-ids). Orders can only be placed if your account has sufficient funds. Once an order is placed, your account funds will be put _on hold_ for the duration of the order. How much and which funds are put on hold depends on the order type and parameters specified.
 
@@ -83,89 +40,34 @@ requests.post(
 
 ### HTTP Request
 
-`POST /v1/orders/buy`
+`POST /v1/orders/buy` or `POST /v1/orders/sell`
 
-### Form/JSON Parameters
+### Common Parameters
+These parameters are common to all order creation requests. See [Special Parameters](#special-parameters) for exceptions.
 
-Parameter | Required | Default | Description
---------- | :--------: | ------- | -----------
-quantity | Y | | Quantity to trade | The quantity to trade. The minimum order size is 0.001 (or $5)
-currency\_pair | N | btcusd | Currency pair
-price | N | | The maximum price you are willing to accept. Note that the executed price will always be lower than or equal to this price if the market conditions allow it, otherwise, the order will not execute (Precision: 8 decimal places for crypto, 2 decimal places for fiat)
-algorithm\_id | N | 200 | The [algorithm id](#algorithm-ids) you wish to use to execute the order
-client\_order\_id | N | | An optional field that can hold a user specified ID
-interval | N | 15 minutes | **For TWAP orders only** The interval specifies the frequency at which orders are executed, this is in seconds
-total\_time | N | | **For TWAP orders only** The maximum time a TWAP order will stay active (must be greater than or equal to 15 minutes), this is in seconds
+Parameter | Default | Description
+--------- | ------- | -----------
+quantity |  | The quantity to trade. The minimum quantity is 0.001 for crypto-denominated pairs, and price*quantity must be greater than $5 for USD-denominated pairs.
+currency\_pair | btcusd | The pair or product to trade.
+price | | The limit price (Precision: 8 decimal places for crypto, 2 decimal places for fiat). **Note: the executed price will always be better than or equal to this price; if the market conditions do not allow it, the order will not execute.** 
+algorithm\_id | 200 | Specifies the [algorithm](#algorithm-ids) you wish to use to execute the order.
+routing\_type | Smart | How SFOX will route your order. For more info, see [Routing Types](#routing-types).
+client\_order\_id | | An optional field that can hold a user-specified ID.
 
-<aside class="warning">
-    If no price is specified, SFOX defaults to an Instant Trade (algorithm_id: 150).
-</aside>
+### Special Parameters
+Some of SFOX's algorithms require different parameters that define execution. 
 
-<aside class="notice">
-    If a price is specified, SFOX will execute the maximum quantity available at or lower than the specified price.
-</aside>
-
-## Place a Sell Order
-
-You can place eight types of orders, specified by an [Algorithm ID](#algorithm-ids). Orders can only be placed if your account has sufficient funds. Once and order is placed, your account funds will be put _on hold_ for the duration of the order. How much and which funds are put on hold depends on the order type and parameters specified.
-
-```shell
-curl "https://api.sfox.com/v1/orders/sell" \
-  -u "<api_key>:" \
-  -d "quantity=1" \
-  -d "currency_pair=btcusd"
-```
-
-```python
-requests.post(
-    "https://api.sfox.com/v1/orders/sell",
-    auth=requests.auth.HTTPBasicAuth("<api_key>", ""),
-    json={
-        "quantity": 1,
-        "currency_pair": "<currency_pair>",
-    }
-).json()
-```
-
-> The above command returns the same JSON object as the Order Status API, and it is structured like this:
-
-```json
-{
-  "id": 667,
-  "quantity": 1,
-  "price": 10,
-  "o_action": "Sell",
-  "pair": "btcusd",
-  "type": "Limit",
-  "vwap": 0,
-  "filled": 0,
-  "status": "Started"
-}
-```
-
-
-### HTTP Request
-
-`POST /v1/orders/sell`
-
-### Form/JSON Parameters
-
-Parameter | Required | Default | Description
---------- | :------: | ------- | -----------
-quantity | Y | | The quantity to trade
-currency\_pair | N | btcusd | The pair to trade
-price | N | | The minimum price you are willing to accept
-algorithm\_id | N | 200 | The [algorithm ID](#algorithm-ids) you wish to have execute the order
-client\_order\_id | N | | An optional field that can hold a user specified ID
-interval | N | 15 minutes | **For TWAP orders only** The interval specifies the frequency at which orders are executed
-total\_time | N | | **For TWAP orders only** The maximum amount of time a TWAP order stays active (note: this must be greater than or equal to 15 minutes)
+Parameter | Algorithms | Default | Description
+--------- | -------- | ------- | -----------
+amount | Market | | The amount (quote currency) to spend when buying. **Note: required if and only if the order is a market buy - in this case, quantity is not required and is ignored**.
+interval | TWAP | 900 | The frequency at which TWAP trades are executed (in seconds).
+total\_time | TWAP | | The maximum time a TWAP order will stay active (in seconds). Must be >= 15 minutes and the interval.
 
 <aside class="warning">
-    If no price is specified, this will default to a Smart Order (`algorithm_id`: 200).
+    If no price is specified for an order (other than Market, Instant, and Simple types), the order will be rejected.
 </aside>
-
 <aside class="notice">
-    If a price is specified, SFOX will execute the maximum quantity available at or higher than the specified price.
+    Orders placed without an Algorithm ID will default to Limit.
 </aside>
 
 ## Cancel an Order
@@ -185,11 +87,59 @@ requests.delete(
 ).json()
 ```
 
-> The above command does not return anything.  To check on the cancellation status of the order you will need to poll the get order status api.
+> The above command does not return anything. To determine the cancellation status of an order, you will need to poll the Order Status endpoint.
 
 ### HTTP Request
 
 `DELETE /v1/orders/<order_id>`
+
+## Order Status
+
+Get the status and details of an order.
+
+```shell
+curl "https://api.sfox.com/v1/orders/<order_id>" \
+  -u "<api_key>:"
+```
+
+```python
+requests.post(
+    "https://api.sfox.com/v1/orders/<order_id>",
+    auth=requests.auth.HTTPBasicAuth("<api_key>", "")
+).json()
+```
+
+> The above command returns a JSON object structured like this:
+
+```json
+{
+  "id": 666,
+  "quantity": 1,
+  "price": 10,
+  "o_action": "Buy",
+  "pair": "btcusd",
+  "type": "Limit",
+  "vwap": 0,
+  "filled": 0,
+  "status": "Started"
+}
+```
+
+### HTTP Request
+
+`GET /v1/orders/<order_id>`
+
+### Possible "status" values
+
+Value | Description
+--------- | -----------
+Started | The order is open on the marketplace waiting for fills
+Cancel pending | The order is in the process of being cancelled
+Canceled | The order was successfully canceled
+Filled | The order was filled
+Done | The order was completed successfully
+
+
 
 ## Get Open Orders
 
@@ -250,48 +200,45 @@ Canceled | The order was successfully canceled
 Filled | The order was filled
 Done | The order was completed successfully
 
-## Get an Order
+## List Asset Pairs
 
-Get the status of a previously placed order.
+Get a list of the asset pairs that are currently active for your account.
+
+<aside class="notice">
+    The "symbol" key in each asset pair is the one that can be used to place orders and request market data.
+</aside>
 
 ```shell
-curl "https://api.sfox.com/v1/orders/<order_id>" \
+curl "https://api.sfox.com/v1/markets/currency-pairs" \
   -u "<api_key>:"
 ```
 
 ```python
-requests.post(
-    "https://api.sfox.com/v1/orders/<order_id>",
+requests.get(
+    "https://api.sfox.com/v1/markets/currency-pairs",
     auth=requests.auth.HTTPBasicAuth("<api_key>", "")
 ).json()
 ```
 
-> The above command returns a JSON structured like this:
+> Response
 
 ```json
 {
-  "id": 666,
-  "quantity": 1,
-  "price": 10,
-  "o_action": "Buy",
-  "pair": "btcusd",
-  "type": "Limit",
-  "vwap": 0,
-  "filled": 0,
-  "status": "Started"
+    "bchbtc": {
+        "formatted_symbol": "BCH/BTC",
+        "symbol": "bchbtc"
+    },
+    "bchusd": {
+        "formatted_symbol": "BCH/USD",
+        "symbol": "bchusd"
+    },
+    "btcusd": {
+        "formatted_symbol": "BTC/USD",
+        "symbol": "btcusd"
+    }
 }
 ```
 
 ### HTTP Request
 
-`GET /v1/orders/<order_id>`
-
-### Possible "status" values
-
-Value | Description
---------- | -----------
-Started | The order is open on the marketplace waiting for fills
-Cancel pending | The order is in the process of being cancelled
-Canceled | The order was successfully canceled
-Filled | The order was filled
-Done | The order was completed successfully
+`GET /v1/markets/currency-pairs`

@@ -11,12 +11,12 @@ toc_footers:
   - <a href='mailto:support@sfox.com'>Need help? Email us</a>
 
 includes:
-  - introduction
+  - overview
   - endpoints
-  - market_data
   - user
-  - algo_ids
   - orders
+  - algo_ids
+  - market_data
   - websockets
   - errors
 

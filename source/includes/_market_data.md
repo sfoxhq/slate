@@ -1,6 +1,6 @@
 # Market Data
 
-## Smart Routing Order Data
+## Smart Routing Order Estimate
 
 ```shell
 $ curl "https://api.sfox.com/v1/offer/buy?amount=1"
@@ -22,12 +22,11 @@ requests.get("https://api.sfox.com/v1/offer/buy", params={"amount": 1}).json()
 }
 ```
 
-This will return the current available price to buy or sell a user-specified quantity of an asset using SFOX's Smart Order Routing.
+Get an estimated execution price for the specified quantity of a given asset using SFOX's Smart Order Routing, as well as related information. **Only use this as an estimate - execution is not guaranteed.**
 
-To get the sell price simply change `buy` to `sell` in the url.
 
 <aside class="notice">
-    Prices can fluctuate very quickly and these prices are based on the data available at that moment. More current price data is available through SFOX's <a href="#websocket-feed">Websocket API</a>.
+    Prices can fluctuate very quickly.  More current price data is available through SFOX's <a href="#websocket-feeds">Websocket API</a>.
 </aside>
 
 ### HTTP Request
@@ -44,8 +43,8 @@ Sell:
 
 Parameter | Required | Default | Description
 --------- | :-------: | ----------- | ----------
-amount| Y | | The amount of crypto assets you will be trading
-pair | N | btcusd | The pair you will be trading
+amount| Y | | The amount you will be trading (base currency).
+pair | N | btcusd | The pair you will be trading.
 
 ### Response Body
 
@@ -61,7 +60,7 @@ total | Total cost of the order
     VWAP, Price, Fees, and Total are in the quote currency (e.g. USD for a btcusd pair).
 </aside>
 
-## Get Orderbook
+## Orderbook
 
 Get the blended L2 orderbook data of our connected exchanges, including the top bids and asks and the location of those bids and asks.
 
