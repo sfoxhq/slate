@@ -50,7 +50,7 @@ Parameter | Default | Description
 quantity |  | The quantity to trade. The minimum quantity is 0.001 for crypto-denominated pairs, and price*quantity must be greater than $5 for USD-denominated pairs.
 currency\_pair | btcusd | The pair or product to trade.
 price | | The limit price (Precision: 8 decimal places for crypto, 2 decimal places for fiat). **Note: the executed price will always be better than or equal to this price; if the market conditions do not allow it, the order will not execute.** 
-algorithm\_id | 200 | Specifies the [algorithm](#algorithm-ids) you wish to use to execute the order.
+algorithm\_id | 200 | Specifies the [algorithm](#algorithms) you wish to use to execute the order.
 routing\_type | Smart | How SFOX will route your order. For more info, see [Routing Types](#routing-types).
 client\_order\_id | | An optional field that can hold a user-specified ID.
 
