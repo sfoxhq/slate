@@ -62,6 +62,7 @@ Parameter | Algorithms | Default | Description
 amount | Market | | The amount (quote currency) to spend when buying. **Note: required if and only if the order is a market buy - in this case, quantity is not required and is ignored**.
 interval | TWAP | 900 | The frequency at which TWAP trades are executed (in seconds).
 total\_time | TWAP | | The maximum time a TWAP order will stay active (in seconds). Must be >= 15 minutes and the interval.
+routing\_option | Hare | BestPrice | Specify how SFOX will trade your order - choose `BestPrice` or `Fast`.
 
 <aside class="warning">
     If no price is specified for an order (other than Market, Instant, and Simple types), the order will be rejected.
