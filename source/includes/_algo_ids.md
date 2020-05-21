@@ -22,5 +22,8 @@ The routing type defines how SFOX prioritizes different sources of liquidity whe
 
 Routing Type | Description
 ----------------- | -----------
-Smart | Routes orders to the best venues for execution based on their quoted prices. 
 NetPrice | Routes orders to the best venues for execution by considering both the quoted prices and the fees charged by the trading venues. Orders can be routed to additional OTC trading venues and receive a 10bps discount on the SFOX fee. For more details, see [here](https://blog.sfox.com/sfox-pricing-crypto-trading-net-price-routing-8997fbc0520).
+
+<aside class="notice">
+    Contact <a href="mailto:support@sfox.com">support@sfox.com</a> to learn more about additional routing options.
+</aside>

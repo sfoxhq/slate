@@ -1,4 +1,4 @@
-# Websocket Feed
+# Websocket Feeds
 
 ## Connecting
 
