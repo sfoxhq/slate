@@ -2,7 +2,7 @@
 
 ## Place an Order
 
-You can place eight types of orders, specified by an [Algorithm ID](#algorithm-ids). Orders can only be placed if your account has sufficient funds. Once an order is placed, your account funds will be put _on hold_ for the duration of the order. How much and which funds are put on hold depends on the order type and parameters specified.
+You can place eight types of orders, specified by an [Algorithm ID](#algorithms). Orders can only be placed if your account has sufficient funds. Once an order is placed, your account funds will be put _on hold_ for the duration of the order. How much and which funds are put on hold depends on the order type and parameters specified.
 
 ```shell
 curl "https://api.sfox.com/v1/orders/buy" \
@@ -45,14 +45,14 @@ requests.post(
 ### Common Parameters
 These parameters are common to all order creation requests. See [Special Parameters](#special-parameters) for exceptions.
 
-Parameter | Default | Description
---------- | ------- | -----------
-quantity |  | The quantity to trade. The minimum quantity is 0.001 for crypto-denominated pairs, and price*quantity must be greater than $5 for USD-denominated pairs.
-currency\_pair | btcusd | The pair or product to trade.
-price | | The limit price (Precision: 8 decimal places for crypto, 2 decimal places for fiat). **Note: the executed price will always be better than or equal to this price; if the market conditions do not allow it, the order will not execute.** 
-algorithm\_id | 200 | Specifies the [algorithm](#algorithm-ids) you wish to use to execute the order.
-routing\_type | Smart | How SFOX will route your order. For more info, see [Routing Types](#routing-types).
-client\_order\_id | | An optional field that can hold a user-specified ID.
+Parameter | Required? | Default | Description
+--------- | --------- | ------- | -----------
+quantity | Y |  | The quantity to trade. The minimum quantity is 0.001 for crypto-denominated pairs, and price*quantity must be greater than $5 for USD-denominated pairs. Not required for market orders.
+currency\_pair | Y |  | The pair or product to trade.
+price | Y |  | The limit price (Precision: 8 decimal places for crypto, 2 decimal places for fiat). Not required for market orders. **Note: the executed price will always be better than or equal to this price; if the market conditions do not allow it, the order will not execute.** 
+algorithm\_id | N | 200 | Specifies the [algorithm](#algorithms) you wish to use to execute the order.
+routing\_type | Y |  | How SFOX will route your order. **For more info, see [Routing Types](#routing-types)**.
+client\_order\_id | N |  | An optional field that can hold a user-specified ID.
 
 ### Special Parameters
 Some of SFOX's algorithms require different parameters that define execution. 
@@ -62,6 +62,7 @@ Parameter | Algorithms | Default | Description
 amount | Market | | The amount (quote currency) to spend when buying. **Note: required if and only if the order is a market buy - in this case, quantity is not required and is ignored**.
 interval | TWAP | 900 | The frequency at which TWAP trades are executed (in seconds).
 total\_time | TWAP | | The maximum time a TWAP order will stay active (in seconds). Must be >= 15 minutes and the interval.
+routing\_option | [Hare, Gorilla] | Fast | Specify how SFOX will trade your order - choose `BestPrice` or `Fast`.
 
 <aside class="warning">
     If no price is specified for an order (other than Market, Instant, and Simple types), the order will be rejected.
