@@ -18,6 +18,7 @@ includes:
   - algo_ids
   - market_data
   - websockets
+  - enterprise
   - errors
 
 search: true

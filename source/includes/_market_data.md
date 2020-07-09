@@ -60,6 +60,79 @@ total | Total cost of the order
     VWAP, Price, Fees, and Total are in the quote currency (e.g. USD for a btcusd pair).
 </aside>
 
+## OHLCV
+
+Access historical aggregated OHLCV data from all supported liquidity providers.
+
+```shell
+curl "https://chartdata.sfox.com/candlesticks?endTime=1592951280&pair=btcusd&period=60&startTime=1592939280"
+```
+
+```python
+requests.get("https://chartdata.sfox.com/candlesticks?endTime=1592951280&pair=btcusd&period=60&startTime=1592939280").json()
+```
+
+> The result is an array of OHLCV datapoints:
+
+```json
+[
+  {
+    "open_price":"9654",
+    "high_price":"9662.37",
+    "low_price":"9653.66",
+    "close_price":"9655.73",
+    "volume":"6.31945755",
+    "start_time":1592939280,
+    "pair":"btcusd",
+    "candle_period":60,
+    "vwap":"9655.70504211",
+    "trades":53
+  },
+  {
+    "open_price":"9655.72",
+    "high_price":"9663.381",
+    "low_price":"9653.8",
+    "close_price":"9653.9",
+    "volume":"19.78230049",
+    "start_time":1592939340,
+    "pair":"btcusd",
+    "candle_period":60,
+    "vwap":"9654.19237263",
+    "trades":56
+    },
+  ...
+]
+```
+
+### HTTP Request
+
+`GET https://chartdata.sfox.com/candlesticks?startTime=<startTime>&pair=<pair>&period=<period>&endTime=<endTime>` 
+
+### Query Parameters
+Parameter | Required | Default | Description
+--------- | -------- | ------- | -----------
+pair | N | btcusd | The pair you want data for 
+startTime | N | | The unix timestamp of the first datapoint returned 
+endTime | N | | The unix timestamp of the last datapoint you want returned
+period | N | | The duration of each datapoint or candle in seconds (i.e. period = 60 would return 1-minute candles)
+
+
+### Response Body
+Key | Description
+--- | -----------
+open_price | The price at the start of that period
+high_price | The highest price reached during that period
+low_price | The lowest price reached during that period
+close_price | The price at the end of that period
+volume | Total volume of the asset traded during that period
+start_time | The unix timestamp of the beginning of the period
+end_time | The unix timestamp of the end of the period
+pair | The trading pair of the data
+candle _period | The duration of each datapoint in seconds
+vwap | The volume-weighted average price of the period
+trades | The total number of trades executed across all liquidity providers during that period
+
+
 ## Orderbook
 
 Get the blended L2 orderbook data of our connected exchanges, including the top bids and asks and the location of those bids and asks.
