@@ -3,6 +3,7 @@
 Endpoint | Description
 --------- | -----------
 Production | https://api.sfox.com
+OHLCV | https://chartdata.sfox.com
 Sandbox | [Contact support](mailto:support@sfox.com)
 
 # Authentication
