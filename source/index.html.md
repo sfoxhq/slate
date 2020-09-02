@@ -19,6 +19,7 @@ includes:
   - market_data
   - websockets
   - errors
+  - fix
 
 search: true
 ---
