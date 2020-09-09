@@ -29,11 +29,22 @@ Tag | Name | Required | Description
 11 | ClOrdID | Y | Client provided order ID, must be unique per-account
 55 | Symbol | Y | Trading pair
 54 | Side | Y | 1 = Buy, 2 = Sell
-40 | OrdType | Y | 1 = Market, 2 = Limit, or any of our [Algoritm IDs](#https://www.sfox.com/developers/#algorithms)
+40 | OrdType | Y | 1 = Market, 2 = Limit, or any of our [Algoritm IDs](#algorithms)
 44 | Price | Y (OrdType = 2) | Limit Price
 38 | OrderQty | Y (OrdType = 2, or OrdType = 1 AND Side = 2) | For limit orders, this is the quantity to trade in the base currency. For Market Sell orders, this is the amount in the base currency.
 152 | CashOrderQty | Y (OrdType = 1 AND Side = 1) | For market buy orders, this is the amount to spend in the quote currency
-18 | ExecInst | N | RoutingType: 100 = Default (default), 101 = NetPrice
+59 | TimeInForce | Y (OrdType = 2) | The lifetime of the order, immediate or cancel (3) and good till cancel (1)
+18 | ExecInst (semi-custom) | N | RoutingType: 100 = Default (default), 101 = NetPrice
+
+Below are the custom fields that are algorithm specific:
+
+Tag | Name | Algorithm | Required | Description
+--- | ---- | --------  | -------- | -----------
+20000 | StopAmount | Trailing Stop (308) | N | The fixed amount to trail the market price by
+20001 | StopPercent | Trailing Stop (308) | N | The percentage to trail the market price by (given as a percent: 10% = 10)
+20010 | Interval | TWAP (307) | Y | The frequency at which TWAP trades are executed (in seconds)
+20011 | TotalTime | TWAP (307) | Y | The maximimum time a TWAP order will stay active (in seconds). Must be >= 15 minutes (900 seconds) and the interval (tag 20010)
+20020 | RoutingOption | Gorilla (301), Hare (303) | Y | How SFOX will trade your order, `BestPrice` or `Fast`
 
 ### OrderStatusRequest - H
 
