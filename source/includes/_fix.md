@@ -29,10 +29,11 @@ Tag | Name | Required | Description
 11 | ClOrdID | Y | Client provided order ID, must be unique per-account
 55 | Symbol | Y | Trading pair
 54 | Side | Y | 1 = Buy, 2 = Sell
-40 | OrdType | Y | 1 = Market, 2 = Limit (currently only basic order types are supported)
+40 | OrdType | Y | 1 = Market, 2 = Limit, or any of our [Algoritm IDs](#https://www.sfox.com/developers/#algorithms)
 44 | Price | Y (OrdType = 2) | Limit Price
 38 | OrderQty | Y (OrdType = 2, or OrdType = 1 AND Side = 2) | For limit orders, this is the quantity to trade in the base currency. For Market Sell orders, this is the amount in the base currency.
 152 | CashOrderQty | Y (OrdType = 1 AND Side = 1) | For market buy orders, this is the amount to spend in the quote currency
+18 | ExecInst | N | RoutingType: 100 = Default (default), 101 = NetPrice
 
 ### OrderStatusRequest - H
 
