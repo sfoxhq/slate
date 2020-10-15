@@ -34,7 +34,7 @@ Tag | Name | Required | Default | Description
 38 | OrderQty | Y | | For limit orders, this is the quantity to trade in the base currency. For Market Sell orders, this is the amount in the base currency.
 152 | CashOrderQty | Y (OrdType = 1 AND Side = 1 or OrdType = 3 (stop) AND Side = 1 (buy)) | |  For market buy orders, this is the amount to spend in the quote currency
 59 | TimeInForce | N | 1 (GTC) | The lifetime of the order, immediate or cancel (3) and good till cancel (1)
-18 | ExecInst (semi-custom) | N | 101 (NetPrice) |  RoutingType: 100 = Rest API default (empty), 101 = NetPrice, 102 = Enterprise
+21 | HandlInst (semi-custom) | N | 2 (NetPrice) |  RoutingType: 1 = Rest API default (empty), 2 = NetPrice, 3 = Enterprise
 
 Below are the custom fields that are algorithm specific:
 
