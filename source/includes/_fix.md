@@ -57,6 +57,7 @@ Tag | Name | Required | Description
 
 Tag | Name | Required | Description
 --- | ---- | -------- | -----------
+11 | ClOrdID | Y | Unique ID of the cancel request
 41 | OrigClOrdID | Y | Original ClOrdID provided when creating the order
 
 ### ExecutionReport - 8
