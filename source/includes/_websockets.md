@@ -451,3 +451,57 @@ quantity | Quantity traded
 sellOrderId | Order ID of the sale
 side | Which side was the taker
 timestamp | Time of the trade
+
+## Heartbeats
+
+The [websocket RFC 6455](https://tools.ietf.org/html/rfc6455#section-5.5.2) defines _control messages_ that can be used for bidirectional heartbeats, allowing either side to perform liveness checks at their own discretion. The specification defines that if either end receives a `PING`, they _must_ respond with a `PONG` - so you can use this with any specification compliant websocket you use even if they do not expose a specific heartbeat subscription.
+
+```python
+import asyncio
+
+import websockets
+
+
+async def main(uri):
+    # This library implements this by default, so you don't have to do anything!
+    # However, you may want to customize the timeouts to be more sensitive:
+    async with websockets.connect(uri, ping_interval=7, ping_timeout=5) as ws:
+        async for msg in ws:
+            print(msg)
+
+
+asyncio.run(main("wss://ws.sfox.com/ws"))
+```
+
+```javascript
+const WebSocket = require("ws");
+const wss = new WebSocket("wss://ws.sfox.com/ws");
+
+let timeout;
+wss.on("pong", () => {
+    if (timeout !== undefined) {
+        clearTimeout(timeout);
+    }
+    console.log("received pong");
+});
+wss.on("close", () => {
+	clearTimeout(timeout);
+});
+
+setInterval(() => {
+    console.log("sending ping");
+    timeout = setTimeout(() => {
+        console.log("NO PONG RECEIVED");
+        wss.terminate();
+    }, 10000);
+    wss.ping(() => {});
+}, 15000);
+```
+
+### SFOX Initiated
+
+We initiate `PING`s approximately every 27 seconds. If a client does not respond with a `PONG` after 5 minutes the connection will be closed.
+
+### Client Initiated
+
+You can issue `PING`s at any time and SFOX will respond with a `PONG`. You can optionally include a payload in the PING message that will be echoed back. This is useful if you need to track specific `PONG` responses.
