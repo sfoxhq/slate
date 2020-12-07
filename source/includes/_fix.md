@@ -6,6 +6,7 @@ HeartBtInt | <=30 | Heart beat interval
 BeginString | FIX.4.4 | Only FIX 4.4 is supported
 SenderCompID | Anything | You can provide your own sender comp id and have any number of FIX sessions
 TargetCompID | SFOX |
+ResetOnLogon | Y |
 
 ## Endpoints
 
@@ -29,7 +30,7 @@ Tag | Name | Required | Default | Description
 11 | ClOrdID | Y | | Client provided order ID, must be unique per-account
 55 | Symbol | Y | | Trading pair (see: [List Asset Pairs](#list-asset-pairs))
 54 | Side | Y | | 1 = Buy, 2 = Sell
-40 | OrdType | Y | | 1 = Market, 2 = Limit, 3 = Stop, or any of our [Algoritm IDs](#algorithms)
+40 | OrdType | Y | | 1 = Market, 2 = Limit, 3 = Stop, or one of our [Algoritm IDs](#algorithms)
 44 | Price | Y (except market orders) | | Limit Price
 38 | OrderQty | Y | | For limit orders, this is the quantity to trade in the base currency. For Market Sell orders, this is the amount in the base currency.
 152 | CashOrderQty | Y (OrdType = 1 AND Side = 1 or OrdType = 3 (stop) AND Side = 1 (buy)) | |  For market buy orders, this is the amount to spend in the quote currency
@@ -64,14 +65,18 @@ Tag | Name | Required | Description
 
 Tag | Name | Description
 --- | ---- | -----------
-37 | OrderID | SFOX Assigned Order ID
+37 | OrderID | SFOX Assigned Order ID, when rejected this will be 0.
+17 | ExecID | SFOX Assigned Trade ID, when rejected this will be 0.
 11 | ClOrdID | Client provided order ID
+31 | LastPx | Last fill price
+32 | LastQty | Last fill quantity
+60 | TransactTime |
 55 | Symbol | Trading pair
 54 | Side | 1 = Buy, 2 = Sell
 40 | OrdType | 1 = Market, 2 = Limit
 44 | Price | Client provided limit price, only if OrdType = 2
-150 | ExecType | Execution type: 0 = New, 3 = Done, 4 = Canceled, 8 = Rejected, F = Fill/Parial, I = Order Status Request
-39 | OrdStatus | Current status of the order: 0 = New, 1 = Partially Filled, 2 = Filled, 3 = Done, 4 = Canceled
+150 | ExecType | Execution type: 0 = New, 4 = Canceled, 8 = Rejected, F = Trade, I = Order Status Request
+39 | OrdStatus | Current status of the order: 0 = New, 1 = Partially Filled, 2 = Filled, 3 = Done, 4 = Canceled, 8 = Rejected
 151 | LeavesQty | Amount remaining of the order
 14 | CumQty | Amount filled so far of the order
 799 | AvgPx | VWAP
