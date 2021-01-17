@@ -89,3 +89,28 @@ Tag | Name | Description
 11 | ClOrdID | Client provided order ID of the cancel request
 41 | OrigClOrdID | Client provided order ID of the original order (echoed back from the request)
 39 | OrdStatus | Existing status of the order that could not be canceled
+
+## Market Data
+
+### Market Data Request - V
+
+Tag | Name | Required | Description
+--- | ---- | -------- | -----------
+262 | MDReqID | Y | Market data request id, this will be included in all [Market Data Snapshot Full Refresh]() updates
+263 | SubscriptionRequestType | Y | 1 - Snapshot + Updates, 2 - Cancel previous subscription (as noted by MDReqID)
+146 | NoRelatedSym | Y | Number of symbols in this request
+-> 55 | Symbol | Y | Pair to subscribe to
+264 | MarketDepth | Y | Depth of the orderbook
+20030| _custom_ | N | Which marketdata feed: `""` - default/standard, `"net"` - net price, `"compact"` - compact/enterprise
+
+### Market Data Snapshot Full Refresh - W
+
+Tag | Name | Description
+--- | ---- | -----------
+262 | MDReqID | Market data request id that this is refresh was created by
+55 | Symbol | Pair
+268 | NoMDEntries | Number of marketdata entries (may be less than or equal to the market depth)
+-> 269 | MDEntryType | 0 - Bid, 1 - Ask/Offer
+-> 270 | MDEntryPx | Price
+-> 271 | MDEntrySize | Size/Quantity
+-> 275 | MDMkt | Market of the entry, not applicable to the compacted feed
